@@ -8,19 +8,19 @@ package br.com.G5.model;
  *
  * @author luisg
  */
-public class pessoa {
+public class Pessoa {
     int id_pessoa = 0;
     String nome_completo;
     String cpf;
     String usuario;
     String senha;
 
-    public pessoa() {
+    public Pessoa() {
     }
 
     
     
-    public pessoa(String nome_completo, String cpf, String usuario, String senha) {
+    public Pessoa(String nome_completo, String cpf, String usuario, String senha) {
         this.nome_completo = nome_completo;
         this.cpf = cpf;
         this.usuario = usuario;
