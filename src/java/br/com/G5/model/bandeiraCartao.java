@@ -11,12 +11,15 @@ package br.com.G5.model;
 public class bandeiraCartao {
     int id_bandeira = 0;
     String nome_bandeira = "";
+    String tipo_cartao = "";
+
 
     public bandeiraCartao() {
     }
-    public bandeiraCartao(int id_bandeira, String nome_bandeira){
+    public bandeiraCartao(int id_bandeira, String nome_bandeira, String tipo_cartao){
         this.id_bandeira = id_bandeira;
         this.nome_bandeira = nome_bandeira;
+        this.tipo_cartao = tipo_cartao;
     }
     
     public int getId_bandeira() {
@@ -35,9 +38,17 @@ public class bandeiraCartao {
         this.nome_bandeira = nome_bandeira;
     }
 
+    public String getTipo_cartao() {
+        return tipo_cartao;
+    }
+
+    public void setTipo_cartao(String tipo_cartao) {
+        this.tipo_cartao = tipo_cartao;
+    }
+
     @Override
     public String toString() {
-        return "bandeiraCartao{" + "id_bandeira=" + id_bandeira + ", nome_bandeira=" + nome_bandeira + '}';
+        return "bandeiraCartao{" + "id da bandeira=" + id_bandeira + ", nome da bandeira=" + nome_bandeira + ", tipo da bandeira"+ tipo_cartao + '}';
     }
     
     
