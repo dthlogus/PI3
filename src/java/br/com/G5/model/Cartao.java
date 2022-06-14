@@ -10,23 +10,24 @@ import java.util.Date;
  *
  * @author luisg
  */
-public class cartao {
-    private int id_cartao = 0;
-    private Date validade;
-    private String nome_titular = "";
-    private Date data_Vencimento;
-    private Date data_pagamento;
-    private Date data_fechamento;
-    private String ccv;
-    private double limite ;
-    private int parcela;
+public class Cartao {
+    int id_cartao = 0;
+    Date validade;
+    String titular;
+    Date data_vencimento;
+    Date data_pagamento;
+    Date data_fechamento;
+    String ccv;
+    Double limite;
+    int parcela;
 
-    public cartao() {
+    public Cartao() {
     }
 
-    public cartao(Date validade, Date data_Vencimento, Date data_pagamento, Date data_fechamento, String ccv, double limite, int parcela) {
+    public Cartao(Date validade, String titular, Date data_vencimento, Date data_pagamento, Date data_fechamento, String ccv, Double limite, int parcela) {
         this.validade = validade;
-        this.data_Vencimento = data_Vencimento;
+        this.titular = titular;
+        this.data_vencimento = data_vencimento;
         this.data_pagamento = data_pagamento;
         this.data_fechamento = data_fechamento;
         this.ccv = ccv;
@@ -50,20 +51,20 @@ public class cartao {
         this.validade = validade;
     }
 
-    public String getNome_titular() {
-        return nome_titular;
+    public String getTitular() {
+        return titular;
     }
 
-    public void setNome_titular(String nome_titular) {
-        this.nome_titular = nome_titular;
+    public void setTitular(String titular) {
+        this.titular = titular;
     }
 
-    public Date getData_Vencimento() {
-        return data_Vencimento;
+    public Date getData_vencimento() {
+        return data_vencimento;
     }
 
-    public void setData_Vencimento(Date data_Vencimento) {
-        this.data_Vencimento = data_Vencimento;
+    public void setData_vencimento(Date data_vencimento) {
+        this.data_vencimento = data_vencimento;
     }
 
     public Date getData_pagamento() {
@@ -90,11 +91,11 @@ public class cartao {
         this.ccv = ccv;
     }
 
-    public double getLimite() {
+    public Double getLimite() {
         return limite;
     }
 
-    public void setLimite(double limite) {
+    public void setLimite(Double limite) {
         this.limite = limite;
     }
 
@@ -105,10 +106,11 @@ public class cartao {
     public void setParcela(int parcela) {
         this.parcela = parcela;
     }
-    
-    
 
-    
+    @Override
+    public String toString() {
+        return "Cartao{" + "id_cartao=" + id_cartao + ", validade=" + validade + ", titular=" + titular + ", data_vencimento=" + data_vencimento + ", data_pagamento=" + data_pagamento + ", data_fechamento=" + data_fechamento + ", ccv=" + ccv + ", limite=" + limite + ", parcela=" + parcela + '}';
+    }
     
     
     
