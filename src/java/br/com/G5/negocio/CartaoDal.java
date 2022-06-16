@@ -8,38 +8,43 @@ import br.com.G5.model.Cartao;
 import br.com.G5.persistencia.Conexao;
 import br.com.G5.persistencia.IOperacoesCartao;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Iterator;
 
 /**
  *
  * @author luisg
  */
-public class CartaoDal implements IOperacoesCartao{
+public abstract class CartaoDal implements IOperacoesCartao{
     private Connection connection ;
     
     public CartaoDal(){
         connection = Conexao.getConnection();
     }
+    public abstract boolean sequenciaOrdenacao (Cartao c1, Cartao c2);
 
     @Override
     public void IAdcionar(Cartao cartao) {
          try {
-           String sql = "insert into cartao(id_cartao,validade,titular,data_vencimento,data_pagamento,data_fechamento,ccv,limite,parcela) values(?,?,?,?,?,?,?,?,?)";
+           String sql = "insert into cartao(id_cartao,nome_cartao,bandeira_cartao,numero_cartao,validade_cartao,ccv,limite_cartao,dt_fechamento,dt_vencimento,dt_pagamento) values(?,?,?,?,?,?,?,?,?,?)";
            PreparedStatement ps;
            ps = connection.prepareStatement(sql);
            ps.setInt(1, cartao.getId_cartao());
-           ps.setDate(2, new java.sql.Date(cartao.getValidade().getTime()));
-           ps.setString(3, cartao.getTitular());
-           ps.setDate(4, new java.sql.Date(cartao.getData_vencimento().getTime()));
-           ps.setDate(5, new java.sql.Date(cartao.getData_pagamento().getTime()));
-           ps.setDate(6, new java.sql.Date(cartao.getData_fechamento().getTime()));
-           ps.setString(7, cartao.getCcv());
-           ps.setDouble(8, cartao.getLimite());
-           ps.setInt(9,cartao.getParcela());
+           ps.setString(2, cartao.getTitular());
+           ps.setString(3, cartao.getBandeira_Cartao());
+           ps.setString(4, cartao.getNumeroDoCartao());
+           ps.setDate(5, Date.valueOf(cartao.getValidade()));
+           ps.setString(6, cartao.getCcv());
+           ps.setDouble(7, cartao.getLimite());
+           ps.setDate(8, Date.valueOf(cartao.getData_fechamento()));
+           ps.setDate(9, Date.valueOf(cartao.getData_vencimento()));
+           ps.setDate(10, Date.valueOf(cartao.getData_pagamento()));
            ps.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -64,17 +69,18 @@ public class CartaoDal implements IOperacoesCartao{
     @Override
     public void IAlterarCartao(Cartao cartao) {
         try {
-            String sql = "UPDATE cartao SET validade = ?,titular = ?,data_vencimento = ?,data_pagamento = ?,data_fechamento = ?,ccv = ?,limite = ?,parcela = ? WHERE id_cartao = ?";
+            String sql = "UPDATE cartao SET nome_cartao = ?, bandeira_cartao = ?,numero_cartao = ?,validade= ?,ccv = ?,limite_cartao = ?,dt_fechamento = ?, dt_vencimento = ?,dt_pagamento = ? WHERE id_cartao = ?";
             PreparedStatement ps = connection.prepareStatement(sql);
-            ps.setDate(1, new java.sql.Date(cartao.getValidade().getTime()));
-            ps.setString(2, cartao.getTitular());
-            ps.setDate(3, new java.sql.Date(cartao.getData_vencimento().getTime()));
-            ps.setDate(4, new java.sql.Date(cartao.getData_pagamento().getTime()));
-            ps.setDate(5, new java.sql.Date(cartao.getData_fechamento().getTime()));
-            ps.setString(6,cartao.getCcv());
-            ps.setDouble(7, cartao.getLimite());
-            ps.setInt(8, cartao.getParcela());
-            ps.setInt(9, cartao.getId_cartao());
+            ps.setInt(10, cartao.getId_cartao());
+            ps.setString(1, cartao.getTitular());
+            ps.setString(2, cartao.getBandeira_Cartao());
+            ps.setString(3, cartao.getNumeroDoCartao());
+            ps.setDate(4, Date.valueOf(cartao.getValidade()));
+            ps.setString(5, cartao.getCcv());
+            ps.setDouble(6, cartao.getLimite());
+            ps.setDate(7, Date.valueOf(cartao.getData_fechamento()));
+            ps.setDate(8, Date.valueOf(cartao.getData_vencimento()));
+            ps.setDate(9, Date.valueOf(cartao.getData_pagamento()));
             ps.executeUpdate();
             
         } catch (SQLException e) {
@@ -93,13 +99,17 @@ public class CartaoDal implements IOperacoesCartao{
             
             if(rs.next()){
                 cartao.setId_cartao(rs.getInt("id_cartao"));
-                cartao.setValidade(rs.getDate("validade"));
-                cartao.setTitular(rs.getString("titular"));
-                cartao.setData_vencimento(rs.getDate("data_vencimento"));
-                cartao.setData_pagamento(rs.getDate("data_fachamento"));
+                cartao.setTitular(rs.getString("nome_cartao"));
+                cartao.setBandeira_Cartao(rs.getString("bandeira_cartao"));
+                cartao.setNumeroDoCartao(rs.getString("numero_cartao"));
+                cartao.setValidade(rs.getDate("validade_cartao").toLocalDate());
                 cartao.setCcv(rs.getString("ccv"));
-                cartao.setLimite(rs.getDouble("limite"));
-                cartao.setParcela(rs.getInt("parcela"));
+                cartao.setLimite(rs.getDouble("limite_cartao"));
+                cartao.setData_fechamento(rs.getDate("dt_fechamento").toLocalDate());
+                cartao.setData_vencimento(rs.getDate("dt_vencimento").toLocalDate());
+                cartao.setData_pagamento(rs.getDate("dt_pagamento").toLocalDate());
+            
+                
             }
             
         } catch (SQLException e) {
@@ -117,21 +127,31 @@ public class CartaoDal implements IOperacoesCartao{
             while(rs.next()) {
                 Cartao cartao = new Cartao();
 				cartao.setId_cartao(rs.getInt("id_cartao"));
-                                cartao.setValidade(rs.getDate("validade"));
-                                cartao.setTitular(rs.getString("titular"));
-                                cartao.setData_vencimento(rs.getDate("data_vencimento"));
-                                cartao.setData_pagamento(rs.getDate("data_pagamento"));
-                                cartao.setData_fechamento(rs.getDate("data_fechamento"));
-                                cartao.setCcv(rs.getString("ccv"));
-                                cartao.setLimite(rs.getDouble("limite"));
-                                cartao.setParcela(rs.getInt("parcela"));
+                                cartao.setTitular(rs.getString("nome_cartao"));
+                                cartao.setBandeira_Cartao(rs.getString("bandeira_cartao"));
+                                cartao.setNumeroDoCartao(rs.getString("numero_cartao"));
+                                cartao.setValidade(rs.getDate("validade_cartao").toLocalDate());
+                                cartao.setData_fechamento(rs.getDate("data_fechamento").toLocalDate());
+                                cartao.setData_vencimento(rs.getDate("data_vencimento").toLocalDate());
+                                cartao.setData_pagamento(rs.getDate("data_pagamento").toLocalDate());
 				cartoes.add(cartao);
             }
             
+             for(int i = 0; i <cartoes.size();i++ ){
+                for(int j = i; j < cartoes.size(); j++){
+                    if(!sequenciaOrdenacao(cartoes.get(i),cartoes.get(j))){
+                        Cartao temp = cartoes.get(j);
+                        cartoes.set(j, cartoes.get(i));
+                        cartoes.set(i, temp);
+                    }
+                }
+            }
         } catch (SQLException e) {
             e.printStackTrace();
         }
         return cartoes;
     }
-    
+ 
+            
+       
 }

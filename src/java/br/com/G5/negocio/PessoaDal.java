@@ -58,7 +58,7 @@ public class PessoaDal implements IOperacoesPessoa {
     }
 
     @Override
-    public void IAlterarCartao(Pessoa objeto) {
+    public void IAlterarPessoa(Pessoa objeto) {
         try {
             String sql = "UPDATE pessoa SET nome_completo = ?,cpf = ?,usuario = ?,senha = ? WHERE id_pessoa = ?";
             PreparedStatement ps = connection.prepareStatement(sql);
@@ -66,7 +66,7 @@ public class PessoaDal implements IOperacoesPessoa {
             ps.setString(2, objeto.getCpf());
             ps.setString(3, objeto.getUsuario());
             ps.setString(4, objeto.getSenha());
-            ps.setInt(9, objeto.getId_pessoa());
+            ps.setInt(5, objeto.getId_pessoa());
             ps.executeUpdate();
             
         } catch (SQLException e) {
