@@ -8,16 +8,16 @@ package br.com.G5.model;
  *
  * @author luisg
  */
-public class contato {
+public class Contato {
     int id_contato = 0;
     String tel_residencial ;
     String email ;
     String tel_celular ;
 
-    public contato() {
+    public Contato() {
     }
 
-    public contato(String tel_residencial, String email, String tel_celular) {
+    public Contato(String tel_residencial, String email, String tel_celular) {
         this.tel_residencial = tel_residencial;
         this.email = email;
         this.tel_celular = tel_celular;

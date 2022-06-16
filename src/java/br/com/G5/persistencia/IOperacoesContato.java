@@ -4,19 +4,17 @@
  */
 package br.com.G5.persistencia;
 
-import br.com.G5.model.Pessoa;
+import br.com.G5.model.Contato;
 import java.util.ArrayList;
 
 /**
  *
  * @author luisg
  */
-public interface IOperacoesPessoa {
-     void IAdcionar(Pessoa objeto);
+public interface IOperacoesContato {
+     void IAdcionar(Contato objeto);
      void IExcluirPorId(int id);
-     void IAlterarPessoa(Pessoa objeto);
-     Pessoa consultarPorId(int id);
-     ArrayList<Pessoa> listagem();
-    
-    
+     void IAlterarContato(Contato objeto);
+     Contato consultarPorId(int id);
+     ArrayList<Contato> listagem();
 }

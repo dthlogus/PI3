@@ -4,6 +4,7 @@
  */
 package br.com.G5.model;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 /**
@@ -12,19 +13,25 @@ import java.util.Date;
  */
 public class Cartao {
     int id_cartao = 0;
-    Date validade;
+    String numeroDoCartao;
+    String bandeira_Cartao;
+    LocalDate validade;
     String titular;
-    Date data_vencimento;
-    Date data_pagamento;
-    Date data_fechamento;
+    LocalDate data_vencimento;
+    LocalDate data_pagamento;
+    LocalDate data_fechamento;
     String ccv;
     Double limite;
-    int parcela;
+  
+    
+  
 
     public Cartao() {
     }
 
-    public Cartao(Date validade, String titular, Date data_vencimento, Date data_pagamento, Date data_fechamento, String ccv, Double limite, int parcela) {
+    public Cartao(String numeroDoCartao, String bandeira_Cartao, LocalDate validade, String titular, LocalDate data_vencimento, LocalDate data_pagamento, LocalDate data_fechamento, String ccv, Double limite) {
+        this.numeroDoCartao = numeroDoCartao;
+        this.bandeira_Cartao = bandeira_Cartao;
         this.validade = validade;
         this.titular = titular;
         this.data_vencimento = data_vencimento;
@@ -32,8 +39,8 @@ public class Cartao {
         this.data_fechamento = data_fechamento;
         this.ccv = ccv;
         this.limite = limite;
-        this.parcela = parcela;
     }
+   
 
     public int getId_cartao() {
         return id_cartao;
@@ -43,11 +50,27 @@ public class Cartao {
         this.id_cartao = id_cartao;
     }
 
-    public Date getValidade() {
+    public String getNumeroDoCartao() {
+        return numeroDoCartao;
+    }
+
+    public void setNumeroDoCartao(String numeroDoCartao) {
+        this.numeroDoCartao = numeroDoCartao;
+    }
+
+    public String getBandeira_Cartao() {
+        return bandeira_Cartao;
+    }
+
+    public void setBandeira_Cartao(String bandeira_Cartao) {
+        this.bandeira_Cartao = bandeira_Cartao;
+    }
+
+    public LocalDate getValidade() {
         return validade;
     }
 
-    public void setValidade(Date validade) {
+    public void setValidade(LocalDate validade) {
         this.validade = validade;
     }
 
@@ -59,27 +82,27 @@ public class Cartao {
         this.titular = titular;
     }
 
-    public Date getData_vencimento() {
+    public LocalDate getData_vencimento() {
         return data_vencimento;
     }
 
-    public void setData_vencimento(Date data_vencimento) {
+    public void setData_vencimento(LocalDate data_vencimento) {
         this.data_vencimento = data_vencimento;
     }
 
-    public Date getData_pagamento() {
+    public LocalDate getData_pagamento() {
         return data_pagamento;
     }
 
-    public void setData_pagamento(Date data_pagamento) {
+    public void setData_pagamento(LocalDate data_pagamento) {
         this.data_pagamento = data_pagamento;
     }
 
-    public Date getData_fechamento() {
+    public LocalDate getData_fechamento() {
         return data_fechamento;
     }
 
-    public void setData_fechamento(Date data_fechamento) {
+    public void setData_fechamento(LocalDate data_fechamento) {
         this.data_fechamento = data_fechamento;
     }
 
@@ -99,20 +122,9 @@ public class Cartao {
         this.limite = limite;
     }
 
-    public int getParcela() {
-        return parcela;
-    }
-
-    public void setParcela(int parcela) {
-        this.parcela = parcela;
-    }
-
     @Override
     public String toString() {
-        return "Cartao{" + "id_cartao=" + id_cartao + ", validade=" + validade + ", titular=" + titular + ", data_vencimento=" + data_vencimento + ", data_pagamento=" + data_pagamento + ", data_fechamento=" + data_fechamento + ", ccv=" + ccv + ", limite=" + limite + ", parcela=" + parcela + '}';
+        return "Cartao{" + "id_cartao=" + id_cartao + ", numeroDoCartao=" + numeroDoCartao + ", bandeira_Cartao=" + bandeira_Cartao + ", validade=" + validade + ", titular=" + titular + ", data_vencimento=" + data_vencimento + ", data_pagamento=" + data_pagamento + ", data_fechamento=" + data_fechamento + ", ccv=" + ccv + ", limite=" + limite + '}';
     }
-    
-    
-    
-    
+
 }
