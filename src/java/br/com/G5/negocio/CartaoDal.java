@@ -21,19 +21,18 @@ import br.com.G5.persistencia.IOperacoesCartao;
  *
  * @author luisg
  */
-public abstract class CartaoDal implements IOperacoesCartao{
+public class CartaoDal implements IOperacoesCartao{
     private Connection connection ;
     
     public CartaoDal(){
         connection = Conexao.getConnection();
     }
-    public abstract boolean sequenciaOrdenacao (Cartao c1, Cartao c2);
     
 
     @Override
     public void IAdcionar(Cartao cartao) {
          try {
-           String sql = "insert into cartao(nome_cartao,bandeira_cartao,numero_cartao,validade_cartao,ccv,limite_cartao,dt_fechamento,dt_vencimento,dt_pagamento) values(?,?,?,?,?,?,?,?,?,?)";
+           String sql = "insert into cartao(nome_cartao,bandeira_cartao,numero_cartao,validade_cartao,ccv,limite_cartao,dt_fechamento,dt_vencimento,dt_pagamento) values(?,?,?,?,?,?,?,?,?)";
            PreparedStatement ps;
            ps = connection.prepareStatement(sql);
            ps.setString(1, cartao.getTitular());
@@ -131,21 +130,14 @@ public abstract class CartaoDal implements IOperacoesCartao{
                                 cartao.setBandeira_Cartao(rs.getString("bandeira_cartao"));
                                 cartao.setNumeroDoCartao(rs.getString("numero_cartao"));
                                 cartao.setValidade(rs.getDate("validade_cartao").toLocalDate());
-                                cartao.setData_fechamento(rs.getDate("data_fechamento").toLocalDate());
-                                cartao.setData_vencimento(rs.getDate("data_vencimento").toLocalDate());
-                                cartao.setData_pagamento(rs.getDate("data_pagamento").toLocalDate());
+                                cartao.setCcv(rs.getString("ccv"));
+                                cartao.setData_fechamento(rs.getDate("dt_fechamento").toLocalDate());
+                                cartao.setData_vencimento(rs.getDate("dt_vencimento").toLocalDate());
+                                cartao.setData_pagamento(rs.getDate("dt_pagamento").toLocalDate());
 				cartoes.add(cartao);
             }
             
-             for(int i = 0; i <cartoes.size();i++ ){
-                for(int j = i; j < cartoes.size(); j++){
-                    if(!sequenciaOrdenacao(cartoes.get(i),cartoes.get(j))){
-                        Cartao temp = cartoes.get(j);
-                        cartoes.set(j, cartoes.get(i));
-                        cartoes.set(i, temp);
-                    }
-                }
-            }
+        
         } catch (SQLException e) {
             e.printStackTrace();
         }

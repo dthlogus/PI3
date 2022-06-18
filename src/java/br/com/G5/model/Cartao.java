@@ -12,7 +12,7 @@ import java.util.Date;
  * @author luisg
  */
 public class Cartao {
-    int id_cartao = 0;
+    int id_cartao ;
     String numeroDoCartao;
     String bandeira_Cartao;
     LocalDate validade;
@@ -21,7 +21,7 @@ public class Cartao {
     LocalDate data_pagamento;
     LocalDate data_fechamento;
     String ccv;
-    Double limite;
+    double limite;
   
     
   
@@ -114,11 +114,11 @@ public class Cartao {
         this.ccv = ccv;
     }
 
-    public Double getLimite() {
+    public double getLimite() {
         return limite;
     }
 
-    public void setLimite(Double limite) {
+    public void setLimite(double limite) {
         this.limite = limite;
     }
 
