@@ -14,7 +14,7 @@ public class Conexao {
         else{
             try {
                 String driver = "org.postgresql.Driver";
-                String url ="jdbc:postgresql://localhost:5433/projetoIntegradorCwallet";
+                String url ="jdbc:postgresql://localhost:5433/ProjetoIntegradorCwallet";
                 String user = "postgres";
                 String password = "140396";
                 Class.forName(driver);
