@@ -13,10 +13,6 @@ import br.com.G5.negocio.CartaoDal;
  */
 public class OrdenarCartaoPorValidade extends CartaoDal{
 
-    public OrdenarCartaoPorValidade(String validade) {
-        super();
-    }
-    
 
     @Override
     public boolean sequenciaOrdenacao(Cartao c1, Cartao c2) {

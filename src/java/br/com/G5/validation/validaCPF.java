@@ -2,7 +2,7 @@ package br.com.G5.validation;
 
 import java.util.InputMismatchException;
 
-public class validaCPF {
+public class ValidaCPF {
     public static boolean isCPF(String CPF){
 
         if (CPF.equals("00000000000") ||

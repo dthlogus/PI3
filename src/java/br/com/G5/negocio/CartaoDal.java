@@ -6,7 +6,6 @@ package br.com.G5.negocio;
 
 import br.com.G5.model.Cartao;
 import br.com.G5.persistencia.Conexao;
-import br.com.G5.persistencia.IOperacoesCartao;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
@@ -16,6 +15,7 @@ import java.sql.Statement;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Iterator;
+import br.com.G5.persistencia.IOperacoesCartao;
 
 /**
  *
@@ -28,23 +28,23 @@ public abstract class CartaoDal implements IOperacoesCartao{
         connection = Conexao.getConnection();
     }
     public abstract boolean sequenciaOrdenacao (Cartao c1, Cartao c2);
+    
 
     @Override
     public void IAdcionar(Cartao cartao) {
          try {
-           String sql = "insert into cartao(id_cartao,nome_cartao,bandeira_cartao,numero_cartao,validade_cartao,ccv,limite_cartao,dt_fechamento,dt_vencimento,dt_pagamento) values(?,?,?,?,?,?,?,?,?,?)";
+           String sql = "insert into cartao(nome_cartao,bandeira_cartao,numero_cartao,validade_cartao,ccv,limite_cartao,dt_fechamento,dt_vencimento,dt_pagamento) values(?,?,?,?,?,?,?,?,?,?)";
            PreparedStatement ps;
            ps = connection.prepareStatement(sql);
-           ps.setInt(1, cartao.getId_cartao());
-           ps.setString(2, cartao.getTitular());
-           ps.setString(3, cartao.getBandeira_Cartao());
-           ps.setString(4, cartao.getNumeroDoCartao());
-           ps.setDate(5, Date.valueOf(cartao.getValidade()));
-           ps.setString(6, cartao.getCcv());
-           ps.setDouble(7, cartao.getLimite());
-           ps.setDate(8, Date.valueOf(cartao.getData_fechamento()));
-           ps.setDate(9, Date.valueOf(cartao.getData_vencimento()));
-           ps.setDate(10, Date.valueOf(cartao.getData_pagamento()));
+           ps.setString(1, cartao.getTitular());
+           ps.setString(2, cartao.getBandeira_Cartao());
+           ps.setString(3, cartao.getNumeroDoCartao());
+           ps.setDate(4, Date.valueOf(cartao.getValidade()));
+           ps.setString(5, cartao.getCcv());
+           ps.setDouble(6, cartao.getLimite());
+           ps.setDate(7, Date.valueOf(cartao.getData_fechamento()));
+           ps.setDate(8, Date.valueOf(cartao.getData_vencimento()));
+           ps.setDate(9, Date.valueOf(cartao.getData_pagamento()));
            ps.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -92,7 +92,7 @@ public abstract class CartaoDal implements IOperacoesCartao{
     public Cartao consultarPorId(int id) {
       Cartao cartao = new Cartao();
         try {
-            String sql = "select * from cartao where id_cartao";
+            String sql = "select * from cartao where id_cartao = ?";
             PreparedStatement ps = connection.prepareStatement(sql);
             ps.setInt(1, id);
             ResultSet rs = ps.executeQuery();
