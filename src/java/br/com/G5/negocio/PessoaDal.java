@@ -4,7 +4,7 @@
  */
 package br.com.G5.negocio;
 
-import br.com.G5.model.Cartao;
+
 import br.com.G5.model.Pessoa;
 import br.com.G5.persistencia.Conexao;
 import br.com.G5.persistencia.IOperacoesPessoa;
@@ -29,14 +29,13 @@ public class PessoaDal implements IOperacoesPessoa {
     @Override
     public void IAdcionar(Pessoa objeto) {
           try {
-           String sql = "insert into pessoa(id_pessoa,nome_completo,cpf,usuario,senha) values(?,?,?,?,?,?)";
+           String sql = "insert into pessoa(nome_completo,cpf,usuario,senha) values(?,?,?,?,?,?)";
            PreparedStatement ps;
            ps = connection.prepareStatement(sql);
-           ps.setInt(1, objeto.getId_pessoa());
-           ps.setString(2,objeto.getNome_completo());
-           ps.setString(3,objeto.getCpf());
-           ps.setString(4,objeto.getUsuario());
-           ps.setString(5,objeto.getSenha());
+           ps.setString(1,objeto.getNome_completo());
+           ps.setString(2,objeto.getCpf());
+           ps.setString(3,objeto.getUsuario());
+           ps.setString(4,objeto.getSenha());
            ps.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -78,7 +77,7 @@ public class PessoaDal implements IOperacoesPessoa {
     public Pessoa consultarPorId(int id) {
          Pessoa pessoa = new Pessoa();
         try {
-            String sql = "select * from pessoa where id_pessoa";
+            String sql = "select * from pessoa where id_pessoa = ?";
             PreparedStatement ps = connection.prepareStatement(sql);
             ps.setInt(1, id);
             ResultSet rs = ps.executeQuery();

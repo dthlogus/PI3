@@ -8,43 +8,66 @@ package br.com.G5.model;
  *
  * @author luisg
  */
-public class conta {
-    int id_conta = 0;
-    String nome_titular;
-    double limite;
+public class Conta {
+    protected int idConta;
+    protected String nomeTitular;
+    protected String nomeBanco;
+    protected int numeroConta;
+    protected double limiteConta;
 
-    public conta() {
+    public Conta() {
     }
 
-    public conta(String nome_titular, double limite) {
-        this.nome_titular = nome_titular;
-        this.limite = limite;
+    public Conta(int idConta, String nomeTitular, String nomeBanco, int numeroConta, double limiteConta) {
+        this.idConta = idConta;
+        this.nomeTitular = nomeTitular;
+        this.nomeBanco = nomeBanco;
+        this.numeroConta = numeroConta;
+        this.limiteConta = limiteConta;
     }
 
-    public int getId_conta() {
-        return id_conta;
+    public int getIdConta() {
+        return idConta;
     }
 
-    public void setId_conta(int id_conta) {
-        this.id_conta = id_conta;
+    public void setIdConta(int idConta) {
+        this.idConta = idConta;
     }
 
-    public String getNome_titular() {
-        return nome_titular;
+    public String getNomeTitular() {
+        return nomeTitular;
     }
 
-    public void setNome_titular(String nome_titular) {
-        this.nome_titular = nome_titular;
+    public void setNomeTitular(String nomeTitular) {
+        this.nomeTitular = nomeTitular;
     }
 
-    public double getLimite() {
-        return limite;
+    public String getNomeBanco() {
+        return nomeBanco;
     }
 
-    public void setLimite(double limite) {
-        this.limite = limite;
+    public void setNomeBanco(String nomeBanco) {
+        this.nomeBanco = nomeBanco;
+    }
+
+    public int getNumeroConta() {
+        return numeroConta;
+    }
+
+    public void setNumeroConta(int numeroConta) {
+        this.numeroConta = numeroConta;
+    }
+
+    public double getLimiteConta() {
+        return limiteConta;
+    }
+
+    public void setLimiteConta(double limiteConta) {
+        this.limiteConta = limiteConta;
     }
     
+
+  
     
     
     

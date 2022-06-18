@@ -7,6 +7,7 @@ package br.com.G5.negocio;
 import br.com.G5.model.Contato;
 import br.com.G5.persistencia.Conexao;
 import br.com.G5.persistencia.IOperacoesContato;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -121,5 +122,7 @@ public class ContatoDal implements IOperacoesContato{
         }
         return contatos;
     }
+
+
     
 }

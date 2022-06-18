@@ -11,11 +11,11 @@ import br.com.G5.negocio.CartaoDal;
  *
  * @author luisg
  */
-public class OrdenarCartaoPorNumeroCartao extends CartaoDal{
+public class OrdenarCartaoPorDataVencimento extends CartaoDal{
 
     @Override
     public boolean sequenciaOrdenacao(Cartao c1, Cartao c2) {
-        return c1.getNumeroDoCartao().compareTo(c2.getNumeroDoCartao()) <= 0;
+       return c1.getData_vencimento().isBefore(c2.getData_vencimento());
     }
-
+    
 }
