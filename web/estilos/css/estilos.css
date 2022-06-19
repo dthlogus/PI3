@@ -314,10 +314,22 @@ body{
     width: 100%;
     background-image: url("../img/background1.jpg");
     padding: 55px 5px;
-    height: 600px;
+    height: 100vh;
 }
 
-.despesa h1{
+.despesa_container_title{
+    position: relative;
+    height: 50px;
+}
+
+.despesa_title{
+    font-size: 3rem;
+    margin-top: -2rem;
+    margin-bottom: 1rem;
+    font-family: serif;
+    color: white;
+    position: absolute;
+    left: 19rem;
 }
 
 .despesa .formDespesa{
@@ -372,18 +384,35 @@ body{
 }
 
 .despesa .tabela{
+    border-radius: 3px;
+    padding: 1.5rem;
+    border: 2px solid white;
     float: right;
     margin-right: 50px;
     color: #fff;
 }
-.despesa  .tabela table{
+.despesa .tabela table{
     border-radius: 3px;
 }
 .despesa  .tabela table tr{
     font-family: system-ui;
 }
 .despesa  .tabela table tr th{
-    padding-right: 20px;
+    padding-bottom: 1rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    text-transform: uppercase;
+    font-weight: bold;
 }
 .despesa  .tabela table tr td{
+    padding-bottom: 0.5rem;
+    text-align: center;
+}
+
+.tb_categoria{
+    text-transform: lowercase;
+}
+
+.tb_categoria::first-letter{
+    text-transform: uppercase;
 }

@@ -6,7 +6,6 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -22,7 +21,9 @@
         </header>
 
         <main class="despesa">
-            <h1>Despesa</h1>
+            <div class="despesa_container_title">
+            <h1 class="despesa_title">Despesa</h1>
+            </div>
             <form method="POST" action="Despesa" class="formDespesa">
                 <div class="dp">
                     <ul>
@@ -33,12 +34,12 @@
 
                         <li>
                             <label id="lbNome" name="lbNome">Nome</label>
-                            <input type="text" id="nome" required="true" name="nome" value="<c:out value="${nome}" />"/>
+                            <input type="text" id="nome" name="nome" value="<c:out value="${nome}" />"/>
 
                         </li>
                         <li>
                             <label id="lbDataAquisicao" name="lbDataAquisicao">Data da aquisição</label>
-                            <input placeholder="12/07/2017" required="true" type="text" id="data_aquisicao" name="data_aquisicao" pattern="^([0-2][0-9]|(3)[0-1])(\/)(((0)[0-9])|((1)[0-2]))(\/)\d{4}$" value="<c:out value="${despesa.data_aquisicao}" />"/>
+                            <input placeholder="12/07/2017" type="text" id="data_aquisicao" name="data_aquisicao" pattern="^([0-2][0-9]|(3)[0-1])(\/)(((0)[0-9])|((1)[0-2]))(\/)\d{4}$" value="<c:out value="${despesa.data_aquisicao}" />"/>
                         </li>
 
                         <li>
@@ -58,7 +59,6 @@
                             <input type="radio" name="repetitivo" value="true" value="<c:out value="${repetitivo}" />">
                             <label>Não</label>
                             <input type="radio" name="repetitivo" value="false" checked value="<c:out value="${repetitivo}" />"> 
-
                         </li>
 
                         <li>
@@ -80,7 +80,7 @@
                         </li>
 
                         <li>
-                            <label id="lbDescricao" name="lbDescricao">Descricao</label>
+                            <label id="lbDescricao" name="lbDescricao">Descrição</label>
                             <textarea name="descricao" rows="4" cols="50" maxlength="250" value="<c:out value="${descricao}" />"></textarea>
                         </li>
 
@@ -128,8 +128,8 @@
                             <c:if test="${!despesa.repetitivo}">
                             <td>Não Habilitado</td>
                             </c:if>
-                            <td><c:out value="${despesa.valor_despesa}"/></td>
-                            <td><c:out value="${despesa.categoria}"/></td>
+                            <td>R$: <c:out value="${despesa.valor_despesa}"/></td>
+                            <td class="tb_categoria"><c:out value="${despesa.categoria}"/></td>
                             <td><c:out value="${despesa.descricao}"/></td>
 
 
