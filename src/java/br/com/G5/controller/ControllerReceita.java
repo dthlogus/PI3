@@ -57,41 +57,65 @@ public class ControllerReceita extends HttpServlet {
         List<Receita> receitas = new ArrayList<>();
         boolean consultar = false;
         String acao;
-
-        receita.setId_receita(Integer.parseInt(request.getParameter("codigo")));
-        receita.setData_aquisicao(LocalDate.parse(request.getParameter("data_aquisicao"), format));
-        receita.setData_disponivel(LocalDate.parse(request.getParameter("data_disponivel"), format));
-        receita.setNome_receita(request.getParameter("nome"));
-        receita.setDescricao("descricao");
-        receita.setValor_receita(Double.parseDouble(request.getParameter("valor")));
-        receita.setCategoria(CategoriaReceitaEnum.valueOf(request.getParameter("categoria").toUpperCase()));
-
+        
         acao = request.getParameter("action");
 
         switch (acao) {
             case "inserir":
-                receitaDal.IAdicionar(receita);
+                if (request.getParameter("id") == null || request.getParameter("id").isEmpty()) {
+                    receita = pegarDadosParam(request);
+                    receitaDal.IAdicionar(receita);
+                }
                 break;
             case "alterar":
-                receitaDal.IAlternarReceita(receita);
+                if (!(request.getParameter("id") == null || request.getParameter("id").isEmpty())) {
+                    receita = pegarDadosParam(request);
+                    receitaDal.IAlternarReceita(receita);
+                }
                 break;
             case "excluir":
-                receitaDal.IExcluirPorId(receita.getId_receita());
+                if (!(request.getParameter("id") == null || request.getParameter("id").isEmpty())) {
+                    receita.setId(Integer.parseInt(request.getParameter("id")));
+                    receitaDal.IExcluirPorId(receita.getId());
+                }
                 break;
             case "consultar":
-                receitas.add(receitaDal.consultaPorId(receita.getId_receita()));
-                consultar = true;
+                if (!(request.getParameter("id") == null || request.getParameter("id").isEmpty())) {
+                    receita.setId(Integer.parseInt(request.getParameter("id")));
+                    receitas.add(receitaDal.consultaPorId(receita.getId()));
+                    consultar = true;
+                }
                 break;
         }
 
         if (consultar) {
             request.setAttribute("lista", receitas);
         } else {
+            receita.setId_pessoa(Integer.parseInt(request.getParameter("id_pessoa")));
             request.setAttribute("lista", receitaDal.listagem(receita.getId_pessoa()));
         }
 
         RequestDispatcher rd = request.getRequestDispatcher("/receita.jsp");
         rd.forward(request, response);
+    }
+
+    private Receita pegarDadosParam(HttpServletRequest request) {
+        Receita receita = new Receita();
+        if (!(request.getParameter("id") == null || request.getParameter("id").isEmpty())) {
+            receita.setId(Integer.parseInt(request.getParameter("id")));
+        }
+        if (!(request.getParameter("data_aquisicao") == null || request.getParameter("data_aquisicao").isEmpty())) {
+            receita.setData_aquisicao(LocalDate.parse(request.getParameter("data_aquisicao"), format));
+        }
+        if (!(request.getParameter("data_disponivel") == null || request.getParameter("data_disponivel").isEmpty())) {
+            receita.setData_disponivel(LocalDate.parse(request.getParameter("data_disponivel"), format));
+        }
+        receita.setNome_receita(request.getParameter("nome"));
+        receita.setDescricao(request.getParameter("descricao"));
+        receita.setValor_receita(Double.parseDouble(request.getParameter("valor")));
+        receita.setCategoria(CategoriaReceitaEnum.valueOf(request.getParameter("categoria").toUpperCase()));
+        receita.setId_pessoa(Integer.parseInt(request.getParameter("id_pessoa")));
+        return receita;
     }
 
 }

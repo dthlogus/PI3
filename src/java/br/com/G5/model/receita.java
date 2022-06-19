@@ -6,6 +6,7 @@ package br.com.G5.model;
 
 import br.com.G5.model.Enum.CategoriaReceitaEnum;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 /**
  *
@@ -13,7 +14,7 @@ import java.time.LocalDate;
  */
 public class Receita {
 
-    int id_receita;
+    int id;
     String nome_receita;
     LocalDate data_aquisicao;
     LocalDate data_disponivel;
@@ -34,12 +35,12 @@ public class Receita {
         this.descricao = descricao;
     }
 
-    public int getId_receita() {
-        return id_receita;
+    public int getId() {
+        return id;
     }
 
-    public void setId_receita(int id_receita) {
-        this.id_receita = id_receita;
+    public void setId(int id_receita) {
+        this.id = id_receita;
     }
 
     public String getNome_receita() {
@@ -50,16 +51,16 @@ public class Receita {
         this.nome_receita = nome_receita;
     }
 
-    public LocalDate getData_aquisicao() {
-        return data_aquisicao;
+    public String getData_aquisicao() {
+        return data_aquisicao.format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));
     }
 
     public void setData_aquisicao(LocalDate data_aquisicao) {
         this.data_aquisicao = data_aquisicao;
     }
 
-    public LocalDate getData_disponivel() {
-        return data_disponivel;
+    public String getData_disponivel() {
+        return data_disponivel.format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));
     }
 
     public void setData_disponivel(LocalDate data_disponivel) {
@@ -98,4 +99,12 @@ public class Receita {
         this.id_pessoa = id_pessoa;
     }
 
+    public LocalDate getDataDisponivelLocalDate(){
+        return data_disponivel;
+    }
+    
+    public LocalDate getDataAquisicaoLocalDate(){
+        return data_disponivel;
+    }
+    
 }
