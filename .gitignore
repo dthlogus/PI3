@@ -240,3 +240,20 @@ nbdist/
 *.code-workspace
 
 # End of https://www.toptal.com/developers/gitignore/api/intellij,netbeans,visualstudiocode,maven,eclipse
+src/java/br/com/G5/controller/Cartao.java
+
+web/estilos/javascripturo/script.js
+
+src/java/br/com/G5/persistencia/OrdenarCartaoPorValidade.java
+
+src/java/br/com/G5/persistencia/OrdenarCartaoPorDataPagamento.java
+
+src/java/br/com/G5/persistencia/OrdenarCartaoPorDataVencimento.java
+
+src/java/br/com/G5/persistencia/OrdenarCartaoPorDataFechamento.java
+
+src/java/br/com/G5/persistencia/OrdenarCartaoPorNumeroCartao.java
+
+src/java/br/com/G5/controller/Contato.java
+
+web/index.jsp

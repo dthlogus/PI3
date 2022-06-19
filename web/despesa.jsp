@@ -11,47 +11,100 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link href="estilos/css/estilos.css" rel="stylesheet" />
+        <script src="estilos/javascripturo/script.js"></script>
         <title>Despesas</title>
     </head>
     <body>
-        <h1>Despesa</h1>
-        <form method="POST" action="Despesa">
-            <div>
-                <label id="lbCodigo" name="lbCodigo">Codigo</label>
-                <input type="number" id="id" name="id" value="<c:out value="${id}" />" />
-                <label id="lbNome" name="lbNome">Nome</label>
-                <input type="text" id="nome" name="nome" value="<c:out value="${nome}" />"/>
-                <label id="lbDataAquisicao" name="lbDataAquisicao">Data da aquisição</label>
-                <input placeholder="12/07/2017" type="text" id="data_aquisicao" name="data_aquisicao" pattern="^([0-2][0-9]|(3)[0-1])(\/)(((0)[0-9])|((1)[0-2]))(\/)\d{4}$" value="<c:out value="${despesa.data_aquisicao}" />"/>
-                <label id="lbParcelaTotal" name="lbParcelaTotal">Total de parcelas</label>
-                <input type="number" id="parcela_total" name="parcela_total" value="<c:out value="${parcela_total}" />"/>
-                <label id="lbParcelaAtual" name="lbParcelaAtual">Parcela atual</label>
-                <input type="number" id="parcela_atual" name="parcela_atual" value="<c:out value="${parcela_atual}" />"/>
-                <label id="lbRepetitivo" name="lbRepetitivo">Repetitivo</label>
-                <input type="radio" name="repetitivo" value="true" value="<c:out value="${repetitivo}" />"> Sim
-                <input type="radio" name="repetitivo" value="false" checked value="<c:out value="${repetitivo}" />"> Não
-                <label id="lbValorDespesa" name="lbValorDespesa">Valor despesa</label>
-                <span>R$</span><input type="number" id="valor_despesa" name="valor_despesa" value="<c:out value="${valor_despesa}" />"/>
-                <label id="lbCategoria" name="lbCategoria">Categoria</label>
-                <select name="categoria" value="<c:out value="${categoria}" />">
-                    <option value="agua">Água</option>
-                    <option value="luz">Luz</option>
-                    <option value="alimentacao">Alimentação</option>
-                    <option value="transporte">Transporte</option>
-                    <option value="estudo">Estudo</option>
-                    <option value="lazer">Lazer</option>
-                    <option value="outros">Outros</option>
-                </select>
-                <label id="lbDescricao" name="lbDescricao">Descricao</label>
-                <textarea name="descricao" rows="4" cols="50" maxlength="250" value="<c:out value="${descricao}" />"></textarea>
-                <input type="number" name="id_pessoa" value="1" readonly hidden/>
-                <button name="action" value="inserir">Inserir</button>
-                <button name="action" value="alterar">Alterar</button>
-                <button name="action" value="excluir">Remover</button>
-                <button name="action" value="consultar">Consultar</button>
-                <button name="action" value="listar">Listar todos</button>
-            </div>
-            <div>
+
+        <header class="header">
+            <h2>C'wallet Web</h2>
+        </header>
+
+        <main class="despesa">
+            <h1>Despesa</h1>
+            <form method="POST" action="Despesa" class="formDespesa">
+                <div class="dp">
+                    <ul>
+                        <li>
+                            <label id="lbCodigo" name="lbCodigo">Codigo</label>
+                            <input type="number" id="id" name="id" value="<c:out value="${id}" />" />
+                        </li>
+
+                        <li>
+                            <label id="lbNome" name="lbNome">Nome</label>
+                            <input type="text" id="nome" required="true" name="nome" value="<c:out value="${nome}" />"/>
+
+                        </li>
+                        <li>
+                            <label id="lbDataAquisicao" name="lbDataAquisicao">Data da aquisição</label>
+                            <input placeholder="12/07/2017" required="true" type="text" id="data_aquisicao" name="data_aquisicao" pattern="^([0-2][0-9]|(3)[0-1])(\/)(((0)[0-9])|((1)[0-2]))(\/)\d{4}$" value="<c:out value="${despesa.data_aquisicao}" />"/>
+                        </li>
+
+                        <li>
+                            <label id="lbParcelaTotal" name="lbParcelaTotal">Total de parcelas</label>
+                            <input type="number" id="parcela_total" name="parcela_total" value="<c:out value="${parcela_total}" />"/>
+
+                        </li>
+
+                        <li>
+                            <label id="lbParcelaAtual" name="lbParcelaAtual">Parcela atual</label>
+                            <input type="number" id="parcela_atual" name="parcela_atual" value="<c:out value="${parcela_atual}" />"/>
+                        </li>
+
+                        <li style="display: flow-root;margin-left: -1px;">
+                            <label id="lbRepetitivo" name="lbRepetitivo">Repetitivo</label>
+                            <label>Sim</label>
+                            <input type="radio" name="repetitivo" value="true" value="<c:out value="${repetitivo}" />">
+                            <label>Não</label>
+                            <input type="radio" name="repetitivo" value="false" checked value="<c:out value="${repetitivo}" />"> 
+
+                        </li>
+
+                        <li>
+                            <label id="lbValorDespesa" name="lbValorDespesa">Valor despesa</label>
+                            <input type="number" id="valor_despesa" name="valor_despesa" value="<c:out value="${valor_despesa}" />"/>
+                        </li>
+
+                        <li>
+                            <label id="lbCategoria" name="lbCategoria">Categoria</label>
+                            <select name="categoria" class="categorias" value="<c:out value="${categoria}" />">
+                                <option value="agua">Água</option>
+                                <option value="luz">Luz</option>
+                                <option value="alimentacao">Alimentação</option>
+                                <option value="transporte">Transporte</option>
+                                <option value="estudo">Estudo</option>
+                                <option value="lazer">Lazer</option>
+                                <option value="outros">Outros</option>
+                            </select>
+                        </li>
+
+                        <li>
+                            <label id="lbDescricao" name="lbDescricao">Descricao</label>
+                            <textarea name="descricao" rows="4" cols="50" maxlength="250" value="<c:out value="${descricao}" />"></textarea>
+                        </li>
+
+                        <li>
+                            <input type="number" name="id_pessoa" value="1" readonly hidden/>
+                        </li>
+
+                        <li style="display: inline-flex;">
+                            <button name="action" value="inserir">Inserir</button>
+                            <button name="action" value="alterar">Alterar</button>
+                            <button name="action" value="excluir">Remover</button>
+                            <button name="action" value="consultar">Consultar</button>
+                            <button name="action" value="listar">Listar todos</button>
+
+                        </li>
+
+                    </ul>
+
+
+                </div>
+
+            </form>
+
+            <div class ="tabela">
                 <table border="1">
                     <tr>
                         <th>Id</th>
@@ -78,10 +131,29 @@
                             <td><c:out value="${despesa.valor_despesa}"/></td>
                             <td><c:out value="${despesa.categoria}"/></td>
                             <td><c:out value="${despesa.descricao}"/></td>
+
+
                         </tr>
                     </c:forEach>
                 </table>
             </div>
-        </form>
+        </main>
+
+        <footer class="footer">
+            <ul>
+                <li>
+                    <p>SENAI FATESG</p>
+                </li>
+                <li>
+                    <p>Analise e Desenvolvimento de Sistemas</p>
+                </li>
+                <li>
+                    <p>3º Período</p>
+                </li>
+                <li>
+                    <p>Grupo 5</p>
+                </li>
+            </ul>
+        </footer>
     </body>
 </html>

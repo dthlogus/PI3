@@ -1,0 +1,389 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css to edit this template
+*/
+/* 
+    Created on : 18/06/2022, 15:06:22
+    Author     : Nicholas
+*/
+
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+    display: block;
+}
+body {
+    line-height: 1;
+}
+ol, ul {
+    list-style: none;
+}
+blockquote, q {
+    quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+    content: '';
+    content: none;
+}
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+*,
+*:after,
+*:before {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+}
+body{
+    font-size: 100%;
+    list-style-type: none;
+}
+
+
+
+/*HEADER*/
+
+.header{
+    height: 65px;
+    background-color: #766c6c;
+    width: 100%;
+    display: block;
+    position: relative;
+}
+.header h2{
+    padding-top: 21px;
+    padding-left: 20px;
+    font-family: system-ui;
+    color: floralwhite;
+    font-style: italic;
+    font-size: larger;
+}
+
+/*FOOTER*/
+
+.footer{
+    height: 124px;
+    background-color: #766c6c;
+    width: 100%;
+    display: block;
+    position: relative;
+    text-align: center;
+    color: floralwhite;
+    font-size: smaller;
+    font-family: system-ui;
+    padding: 3px;
+}
+.footer ul{
+}
+.footer ul li{
+    margin: 5px;
+}
+.footer ul li p{
+}
+
+
+/*MAIN*/
+.main{
+    width: 100%;
+    background-image: url("../img/background1.jpg");
+    padding: 95px 125px;
+    height: 600px;
+}
+
+/*CADASTRO*/
+.main{
+}
+.main .index{
+}
+.main .index .cadastro{
+    float: left;
+    border: 2px solid #fff;
+    padding: 30px 40px;
+    background-color: #70809045;
+    border-radius: 40px;
+    line-height: 20px;
+    backdrop-filter: blur(25px);
+    max-width: 50%;
+    max-height: 50%;
+}
+.main .index .cadastro h1{
+    text-align: center;
+    color: floralwhite;
+    margin-bottom: 20px;
+    font-size: revert;
+}
+.main .index .cadastro .cadastrar{
+    margin: 10px 41px;
+    padding: 10px 10px;
+    border-radius: 10px;
+    background: none;
+    color: #fff;
+    border: 1px solid;
+    font-weight: bold;
+    font-size: 0.9rem;
+}
+.main .index .cadastro .cadastrar:hover{
+    background-color: #ffffff7d;
+    color: #000;
+}
+.main .index .cadastro form{
+    font-family: system-ui;
+}
+.main .index .cadastro form ul{
+    display: table-caption;
+    margin-bottom: 10px;
+}
+.main .index .cadastro form ul li{
+    margin-bottom: 20px;
+}
+.main .index .cadastro form ul li label{
+    color: #fff;
+    padding-bottom: 1;
+}
+.main .index .cadastro form ul li input{
+    border-radius: 5px;
+    height: 30px;
+    padding: 3px;
+}
+
+/*LOGIN*/
+
+.main .index{
+}
+
+
+.main .index .login{
+    float: right;
+    border: 2px solid #fff;
+    padding: 30px 40px;
+    background-color: #70809045;
+    border-radius: 40px;
+    line-height: 20px;
+    backdrop-filter: blur(25px);
+    max-width: 50%;
+    max-height: 50%;
+    margin: 60px 0px;
+}
+.main .index .login h1{
+    text-align: center;
+    color: floralwhite;
+    margin-bottom: 20px;
+    font-size: revert;
+}
+.main .index .login .acessar{
+    margin: 10px 56px;
+    padding: 10px 10px;
+    border-radius: 10px;
+    background: none;
+    color: #fff;
+    border: 1px solid;
+    font-weight: bold;
+    font-size: 0.9rem;
+}
+.main .index .login .acessar:hover{
+    background-color: #ffffff7d;
+    color: #000;
+}
+.main .index .login form{
+    font-family: system-ui;
+}
+.main .index .login form ul{
+    display: table-caption;
+    margin-bottom: 10px;
+}
+.main .index .login form ul li{
+    margin-bottom: 20px;
+}
+.main .index .login form ul li label{
+    color: #fff;
+    padding-bottom: 1;
+}
+.main .index .login form ul li input{
+    border-radius: 5px;
+    height: 30px;
+    padding: 3px;
+}
+
+
+
+/*CADASTRO CC*/
+
+.header .menu{
+}
+.header .menu a{
+}
+
+
+.main .index .cadastroContaCorrente{
+    float: left;
+    border: 2px solid #fff;
+    padding: 30px 40px;
+    background-color: #70809045;
+    border-radius: 40px;
+    line-height: 20px;
+    backdrop-filter: blur(25px);
+    max-width: 50%;
+    max-height: 50%;
+}
+.main .index .cadastroContaCorrente form{
+    font-family: system-ui;
+}
+.main .index .cadastroContaCorrente form h1{
+    text-align: center;
+    color: floralwhite;
+    margin-bottom: 20px;
+    font-size: revert;
+}
+.main .index .cadastroContaCorrente form ul{
+    display: table-caption;
+    margin-bottom: 10px;
+}
+.main .index .cadastroContaCorrente form ul li{
+    margin-bottom: 20px;
+}
+.main .index .cadastroContaCorrente form ul li label{
+    color: #fff;
+    padding-bottom: 1px;
+}
+.main .index .cadastroContaCorrente form ul li input{
+    border-radius: 5px;
+    height: 30px;
+    padding: 3px;
+}
+.main .index .cadastroContaCorrente form ul li .banco{
+    padding: 3px 44px 3px 3px;
+    border-radius: 5px;
+}
+.main .index .cadastroContaCorrente form ul li .banco option{
+}
+.main .index .cadastroContaCorrente form ul li .banco option{
+}
+.main .index .cadastroContaCorrente form .cadastarConta{
+    margin: 10px 56px;
+    padding: 10px 10px;
+    border-radius: 10px;
+    background: none;
+    color: #fff;
+    border: 1px solid;
+    font-weight: bold;
+    font-size: 0.9rem;
+
+}
+.main .index .cadastroContaCorrente form .cadastarConta:hover{
+    background: rgba( 255, 255, 255, 0.25 );
+    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+    backdrop-filter: blur( 4px );
+    -webkit-backdrop-filter: blur( 4px );
+    border-radius: 10px;
+    border: 1px solid rgba( 255, 255, 255, 0.18 );
+    color: #fff;
+}
+
+/*DESPESA*/
+.despesa{
+    width: 100%;
+    background-image: url("../img/background1.jpg");
+    padding: 55px 5px;
+    height: 600px;
+}
+
+.despesa h1{
+}
+
+.despesa .formDespesa{
+    float: left;
+    border: 2px solid #fff;
+    padding: 30px 20px;
+    background-color: #70809045;
+    border-radius: 40px;
+    line-height: 20px;
+    backdrop-filter: blur(25px);
+    max-width: 40%;
+    max-height: 100%;
+    margin-left: 20px;
+}
+.despesa .formDespesa .dp{
+}
+.despesa .formDespesa .dp ul{
+    color: #fff;
+    font-family: system-ui;
+}
+.despesa .formDespesa .dp ul li{
+    display: inline-grid;
+    padding: 3px;
+    padding-bottom: 3px;
+}
+.despesa .formDespesa .dp ul li label{
+    padding-bottom: 3px;
+}
+.despesa .formDespesa .dp ul li input{
+    padding: 2px;
+}
+.despesa .formDespesa .dp ul li .categorias{
+    padding: 2px;
+}
+.despesa .formDespesa .dp ul li .categorias option{
+}
+.despesa .formDespesa .dp ul li button{
+    margin: 10px 4px;
+    padding: 10px 8px;
+    border-radius: 10px;
+    background: none;
+    color: #fff;
+    border: 1px solid;
+    font-weight: bold;
+    font-size: 0.9rem;
+    width: 106px;
+}
+
+.despesa .formDespesa .dp ul li button{
+    background-color: #ffffff7d;
+    color: #000;
+}
+
+.despesa .tabela{
+    float: right;
+    margin-right: 50px;
+    color: #fff;
+}
+.despesa  .tabela table{
+    border-radius: 3px;
+}
+.despesa  .tabela table tr{
+    font-family: system-ui;
+}
+.despesa  .tabela table tr th{
+    padding-right: 20px;
+}
+.despesa  .tabela table tr td{
+}
