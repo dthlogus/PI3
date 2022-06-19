@@ -62,7 +62,7 @@ public class ReceitaDal implements IOperacoesReceita {
     }
 
     @Override
-    public void IAlternarDespesa(Receita receita) {
+    public void IAlternarReceita(Receita receita) {
                 try {
             String sql = "UPDATE receita SET valor_receita = ?,dt_aquisicao = ?,dt_disponivel = ?,"
                     + "nome_receita = ?,categoria_receita = ?,descricao = ?, id_pessoa = ?"

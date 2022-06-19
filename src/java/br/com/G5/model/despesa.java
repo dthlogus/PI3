@@ -12,7 +12,7 @@ import java.time.LocalDate;
  * @author luisg
  */
 public class Despesa {
-    int id_despesa;
+    int id;
     String nome;
     LocalDate data_aquisicao;
     int parcela_total;
@@ -34,12 +34,12 @@ public class Despesa {
         this.valor_despesa = valor_despesa;
     }
 
-    public void setId_despesa(int id_despesa) {
-        this.id_despesa = id_despesa;
+    public void setId(int id) {
+        this.id = id;
     }
     
-    public int getId_despesa() {
-        return id_despesa;
+    public int getId() {
+        return id;
     }
 
     public LocalDate getData_aquisicao() {

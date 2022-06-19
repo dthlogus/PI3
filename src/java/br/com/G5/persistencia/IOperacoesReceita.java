@@ -17,7 +17,7 @@ public interface IOperacoesReceita {
 
     void IExcluirPorId(int id);
 
-    void IAlternarDespesa(Receita receita);
+    void IAlternarReceita(Receita receita);
 
     Receita consultaPorId(int id);
 

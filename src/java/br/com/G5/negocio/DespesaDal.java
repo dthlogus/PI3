@@ -14,6 +14,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -38,9 +39,18 @@ public class DespesaDal implements IOperacoesDespesa {
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setString(1, despesa.getNome());
             ps.setDouble(2, despesa.getValor_despesa());
-            ps.setDate(3, Date.valueOf(despesa.getData_aquisicao()));
-            ps.setInt(4, despesa.getParcela_total());
-            ps.setInt(5, despesa.getParcela_atual());
+            if (despesa.getData_aquisicao() == null) {
+                ps.setDate(3, Date.valueOf(LocalDate.now()));
+            } else {
+                ps.setDate(3, Date.valueOf(despesa.getData_aquisicao()));
+            }
+            if (despesa.getParcela_atual() == 0 || despesa.getParcela_total() == 0) {
+                ps.setInt(4, 0);
+                ps.setInt(5, 0);
+            } else {
+                ps.setInt(4, despesa.getParcela_total());
+                ps.setInt(5, despesa.getParcela_atual());
+            }
             ps.setBoolean(6, despesa.isRepetitivo());
             ps.setString(7, despesa.getCategoria().toString());
             ps.setString(8, despesa.getDescricao());
@@ -79,7 +89,7 @@ public class DespesaDal implements IOperacoesDespesa {
             ps.setString(7, despesa.getCategoria().toString());
             ps.setString(8, despesa.getDescricao());
             ps.setInt(9, despesa.getId_pessoa());
-            ps.setInt(10, despesa.getId_despesa());
+            ps.setInt(10, despesa.getId());
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -94,7 +104,7 @@ public class DespesaDal implements IOperacoesDespesa {
             ps.setInt(1, id);
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
-                despesa.setId_despesa(rs.getInt("id_despesa"));
+                despesa.setId(rs.getInt("id_despesa"));
                 despesa.setNome(rs.getString("nome_despesa"));
                 despesa.setValor_despesa(rs.getDouble("valor_despesa"));
                 despesa.setData_aquisicao(rs.getDate("dt_aquisicao").toLocalDate());
@@ -116,12 +126,12 @@ public class DespesaDal implements IOperacoesDespesa {
         List<Despesa> despesas = new ArrayList<>();
         try {
             String sql = "SELECT * FROM despesa WHERE id_pessoa = ?";
-            PreparedStatement ps  = con.prepareStatement(sql);
+            PreparedStatement ps = con.prepareStatement(sql);
             ps.setInt(1, id);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 Despesa despesa = new Despesa();
-                despesa.setId_despesa(rs.getInt("id_despesa"));
+                despesa.setId(rs.getInt("id_despesa"));
                 despesa.setNome(rs.getString("nome_despesa"));
                 despesa.setValor_despesa(rs.getDouble("valor_despesa"));
                 despesa.setData_aquisicao(rs.getDate("dt_aquisicao").toLocalDate());

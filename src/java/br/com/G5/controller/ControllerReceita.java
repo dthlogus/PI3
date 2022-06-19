@@ -19,7 +19,7 @@ import java.util.List;
 
 @WebServlet(name = "ControllerReceita", urlPatterns = {"/Receita"})
 public class ControllerReceita extends HttpServlet {
-     
+
     private ReceitaDal receitaDal;
     private PessoaDal pessoaDal;
     DateTimeFormatter format = DateTimeFormatter.ofPattern("dd/MM/yyyy");
@@ -27,17 +27,16 @@ public class ControllerReceita extends HttpServlet {
     public ControllerReceita() {
         receitaDal = new ReceitaDal();
         pessoaDal = new PessoaDal();
-    }   
-    
-        
+    }
+
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
+        try ( PrintWriter out = response.getWriter()) {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet Controller</title>");            
+            out.println("<title>Servlet Controller</title>");
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Servlet Controller at " + request.getContextPath() + "</h1>");
@@ -45,7 +44,7 @@ public class ControllerReceita extends HttpServlet {
             out.println("</html>");
         }
     }
-    
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -58,7 +57,7 @@ public class ControllerReceita extends HttpServlet {
         List<Receita> receitas = new ArrayList<>();
         boolean consultar = false;
         String acao;
-        
+
         receita.setId_receita(Integer.parseInt(request.getParameter("codigo")));
         receita.setData_aquisicao(LocalDate.parse(request.getParameter("data_aquisicao"), format));
         receita.setData_disponivel(LocalDate.parse(request.getParameter("data_disponivel"), format));
@@ -66,15 +65,15 @@ public class ControllerReceita extends HttpServlet {
         receita.setDescricao("descricao");
         receita.setValor_receita(Double.parseDouble(request.getParameter("valor")));
         receita.setCategoria(CategoriaReceitaEnum.valueOf(request.getParameter("categoria").toUpperCase()));
-        
+
         acao = request.getParameter("action");
-        
-        switch(acao){
+
+        switch (acao) {
             case "inserir":
                 receitaDal.IAdicionar(receita);
                 break;
             case "alterar":
-                receitaDal.IAlternarDespesa(receita);
+                receitaDal.IAlternarReceita(receita);
                 break;
             case "excluir":
                 receitaDal.IExcluirPorId(receita.getId_receita());
@@ -84,15 +83,15 @@ public class ControllerReceita extends HttpServlet {
                 consultar = true;
                 break;
         }
-        
-        if(consultar){
+
+        if (consultar) {
             request.setAttribute("lista", receitas);
-        }else{
+        } else {
             request.setAttribute("lista", receitaDal.listagem(receita.getId_pessoa()));
         }
-        
-        RequestDispatcher rd = request.getRequestDispatcher("/despesas.jsp");
+
+        RequestDispatcher rd = request.getRequestDispatcher("/receita.jsp");
         rd.forward(request, response);
     }
-    
+
 }
