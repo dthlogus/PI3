@@ -417,14 +417,12 @@ body{
     text-transform: uppercase;
 }
 
-/*CARTÃO*/
-
 /*CARTÕES*/
 .cartao{
     width: 100%;
     background-image: url("../img/background1.jpg");
     padding: 55px 5px;
-    height: 740px;
+    height: 600px;
 }
 
 .cartao .cadastroCartao{
@@ -433,7 +431,7 @@ body{
 .cartao .cadastroCartao .formCartao{
     float: left;
     border: 2px solid #fff;
-    padding: 20px 7px;
+    padding: 20px 20px;
     background-color: #70809045;
     border-radius: 40px;
     line-height: 20px;
@@ -443,74 +441,20 @@ body{
     margin-left: 20px;
 }
 
-.cartao .cadastroCartao .formCartao h1{
-    text-align: center;
-    color: floralwhite;
-    margin-bottom: 20px;
-    font-size: x-large;
-    font-family: system-ui;
-}
-
+.cartao .cadastroCartao .formCartao h1{}
 
 
 .cartao .cadastroCartao .formCartao .tabelaCadastroCartao{
 }
 
-.cartao .cadastroCartao .formCartao .tabelaCadastroCartao tbody{
-    color: #fff;
-    font-family: system-ui;
-}
+.cartao .cadastroCartao .formCartao .tabelaCadastroCartao tbody{color: #fff;font-family: system-ui;}
 
-.cartao .cadastroCartao .formCartao .tabelaCadastroCartao tbody tr{
-}
+.cartao .cadastroCartao .formCartao .tabelaCadastroCartao tbody tr{}
 
 .cartao .cadastroCartao .formCartao .tabelaCadastroCartao tbody tr td{
 }
 
-.cartao .cadastroCartao .formCartao .tabelaCadastroCartao tbody tr td input{
-    border-radius: 5px;
-    padding: 3px;
-    margin-bottom: 14px;
-}
+.cartao .cadastroCartao .formCartao .tabelaCadastroCartao tbody tr td input{border-radius: 5px;padding: 3px;margin-bottom: 14px;}
 
 .cartao .cadastroCartao .formCartao .botao{
-    margin: 10px 4px;
-    padding: 10px 8px;
-    border-radius: 10px;
-    background: none;
-    color: #fff;
-    border: 1px solid;
-    font-weight: bold;
-    font-size: 0.9rem;
-    width: 86px;
-}
-
-.cartao .cadastroCartao .formCartao .botao:hover{
-    background: rgba( 255, 255, 255, 0.25 );
-    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
-    backdrop-filter: blur( 4px );
-    -webkit-backdrop-filter: blur( 4px );
-    border-radius: 10px;
-    border: 1px solid rgba( 255, 255, 255, 0.18 );
-    color: #fff;
-
-}
-
-.cartao .tabelaCartao{
-}
-.cartao .tabelaCartao .formTabelaCartoes{
-    float: right;
-}
-.cartao .tabelaCartao .formTabelaCartoes thead{
-}
-.cartao .tabelaCartao .formTabelaCartoes thead tr{
-}
-.cartao .tabelaCartao .formTabelaCartoes thead tr th{
-    padding-right: 10px;
-}
-.cartao .tabelaCartao .formTabelaCartoes tbody{
-}
-.cartao .tabelaCartao .formTabelaCartoes tbody tr{
-}
-.cartao .tabelaCartao .formTabelaCartoes tbody tr td{
 }
