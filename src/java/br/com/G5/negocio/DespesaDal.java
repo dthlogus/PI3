@@ -40,7 +40,7 @@ public class DespesaDal implements IOperacoesDespesa {
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setString(1, despesa.getNome());
             ps.setDouble(2, despesa.getValor_despesa());
-            if (despesa.getData_aquisicao() == null) {
+            if (despesa.getDataAquisicaoLocalDate() == null) {
                 ps.setDate(3, Date.valueOf(LocalDate.now()));
             } else {
                 ps.setDate(3, Date.valueOf(despesa.getDataAquisicaoLocalDate()));
@@ -83,7 +83,7 @@ public class DespesaDal implements IOperacoesDespesa {
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setString(1, despesa.getNome());
             ps.setDouble(2, despesa.getValor_despesa());
-            ps.setDate(3, Date.valueOf(despesa.getData_aquisicao()));
+            ps.setDate(3, Date.valueOf(despesa.getDataAquisicaoLocalDate()));
             ps.setInt(4, despesa.getParcela_total());
             ps.setInt(5, despesa.getParcela_atual());
             ps.setBoolean(6, despesa.isRepetitivo());

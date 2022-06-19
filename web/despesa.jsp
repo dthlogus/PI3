@@ -84,10 +84,6 @@
                             <textarea name="descricao" rows="4" cols="50" maxlength="250" value="<c:out value="${descricao}" />"></textarea>
                         </li>
 
-                        <li>
-                            <input type="number" name="id_pessoa" value="1" readonly hidden/>
-                        </li>
-
                         <li style="display: inline-flex;">
                             <button name="action" value="inserir">Inserir</button>
                             <button name="action" value="alterar">Alterar</button>

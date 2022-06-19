@@ -91,7 +91,7 @@ public class ControllerReceita extends HttpServlet {
         if (consultar) {
             request.setAttribute("lista", receitas);
         } else {
-            receita.setId_pessoa(Integer.parseInt(request.getParameter("id_pessoa")));
+            receita.setId_pessoa(Integer.parseInt(request.getSession().getAttribute("id_pessoa").toString()));
             request.setAttribute("lista", receitaDal.listagem(receita.getId_pessoa()));
         }
 
@@ -114,7 +114,7 @@ public class ControllerReceita extends HttpServlet {
         receita.setDescricao(request.getParameter("descricao"));
         receita.setValor_receita(Double.parseDouble(request.getParameter("valor")));
         receita.setCategoria(CategoriaReceitaEnum.valueOf(request.getParameter("categoria").toUpperCase()));
-        receita.setId_pessoa(Integer.parseInt(request.getParameter("id_pessoa")));
+        receita.setId_pessoa(Integer.parseInt(request.getSession().getAttribute("id_pessoa").toString()));
         return receita;
     }
 
