@@ -15,6 +15,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -42,7 +43,7 @@ public class DespesaDal implements IOperacoesDespesa {
             if (despesa.getData_aquisicao() == null) {
                 ps.setDate(3, Date.valueOf(LocalDate.now()));
             } else {
-                ps.setDate(3, Date.valueOf(despesa.getData_aquisicao()));
+                ps.setDate(3, Date.valueOf(despesa.getDataAquisicaoLocalDate()));
             }
             if (despesa.getParcela_atual() == 0 || despesa.getParcela_total() == 0) {
                 ps.setInt(4, 0);
@@ -66,7 +67,7 @@ public class DespesaDal implements IOperacoesDespesa {
         try {
             String sql = "DELETE FROM despesa WHERE id_despesa = ?";
             PreparedStatement ps = con.prepareStatement(sql);
-            ps.setInt(0, id);
+            ps.setInt(1, id);
             ps.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -77,7 +78,7 @@ public class DespesaDal implements IOperacoesDespesa {
     public void IAlternarDespesa(Despesa despesa) {
         try {
             String sql = "UPDATE despesa SET nome_despesa = ?,valor_despesa = ?,dt_aquisicao = ?,"
-                    + "parcela_total = ?,parcela_atual = ?,despesa_repetitiva = ?,categoria_despesa = ?,descricao_despesa = ?, id_pessoa "
+                    + "parcela_total = ?,parcela_atual = ?,despesa_repetitiva = ?,categoria_despesa = ?,descricao_despesa = ?, id_pessoa = ? "
                     + "WHERE id_despesa = ?";
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setString(1, despesa.getNome());
@@ -90,6 +91,7 @@ public class DespesaDal implements IOperacoesDespesa {
             ps.setString(8, despesa.getDescricao());
             ps.setInt(9, despesa.getId_pessoa());
             ps.setInt(10, despesa.getId());
+            ps.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
         }

@@ -57,6 +57,7 @@ public class ControllerDespesa extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
+        doPost(request, response);
     }
 
     @Override
@@ -66,61 +67,67 @@ public class ControllerDespesa extends HttpServlet {
         boolean consultar = false;
         String acao;
 
-        if (!(request.getParameter("name") == null || request.getParameter("name").isEmpty())) {
-
-            if (request.getParameter("id") == null || request.getParameter("id").isEmpty()) {
-            } else {
-                despesa.setId(Integer.parseInt(request.getParameter("codigo")));
-            }
-            despesa.setNome(request.getParameter("nome"));
-            if (request.getParameter("data_aquisicao") == null || request.getParameter("data_aquisicao").isEmpty()) {
-            } else {
-                despesa.setData_aquisicao(LocalDate.parse(request.getParameter("data_aquisicao"), format));
-            }
-            if ((request.getParameter("parcela_total") == null || request.getParameter("parcela_atual") == null) || (request.getParameter("parcela_total").isEmpty() || request.getParameter("parcela_atual").isEmpty())) {
-                despesa.setParcela_total(0);
-                despesa.setParcela_atual(0);
-            } else {
-                despesa.setParcela_total(Integer.parseInt(request.getParameter("parcela_total")));
-                despesa.setParcela_atual(Integer.parseInt(request.getParameter("parcela_atual")));
-            }
-            despesa.setRepetitivo(Boolean.parseBoolean(request.getParameter("repetitivo")));
-            despesa.setValor_despesa(Double.parseDouble(request.getParameter("valor_despesa")));
-            despesa.setCategoria(CategoriaDespesaEnum.valueOf(request.getParameter("categoria").toUpperCase()));
-            despesa.setDescricao(request.getParameter("descricao"));
-        }
-        despesa.setId_pessoa(Integer.parseInt(request.getParameter("id_pessoa")));
-
         acao = request.getParameter("action");
 
         switch (acao) {
             case "inserir":
+                despesa = pegarDadosParam(request);
                 despesaDal.IAdicionar(despesa);
                 break;
             case "alterar":
+                despesa = pegarDadosParam(request);
                 despesaDal.IAlternarDespesa(despesa);
                 break;
             case "excluir":
-                despesaDal.IExcluirPorId(despesa.getId());
+                if (!(request.getParameter("id") == null || request.getParameter("id").isEmpty())) {
+                    despesa.setId(Integer.parseInt(request.getParameter("id")));
+                    despesaDal.IExcluirPorId(despesa.getId());
+                }
                 break;
             case "consultar":
-                despesas.add(despesaDal.consultaPorId(despesa.getId()));
-                consultar = true;
-                break;
-            case "listar":
-                despesas = despesaDal.listagem(despesa.getId_pessoa());
-                consultar = true;
+                if (!(request.getParameter("id") == null || request.getParameter("id").isEmpty())) {
+                    despesa.setId(Integer.parseInt(request.getParameter("id")));
+                    despesas.add(despesaDal.consultaPorId(despesa.getId()));
+                    consultar = true;
+                }
                 break;
         }
 
         if (consultar) {
             request.setAttribute("lista", despesas);
         } else {
+            despesa.setId_pessoa(Integer.parseInt(request.getParameter("id_pessoa")));
             request.setAttribute("lista", despesaDal.listagem(despesa.getId_pessoa()));
         }
 
         RequestDispatcher rd = request.getRequestDispatcher("/despesa.jsp");
         rd.forward(request, response);
+    }
+
+    private Despesa pegarDadosParam(HttpServletRequest request) {
+        Despesa despesa = new Despesa();
+
+        if (!(request.getParameter("id") == null || request.getParameter("id").isEmpty())) {
+            despesa.setId(Integer.parseInt(request.getParameter("id")));
+        }
+        despesa.setNome(request.getParameter("nome"));
+        if (request.getParameter("data_aquisicao") == null || request.getParameter("data_aquisicao").isEmpty()) {
+        } else {
+            despesa.setData_aquisicao(LocalDate.parse(request.getParameter("data_aquisicao"), format));
+        }
+        if ((request.getParameter("parcela_total") == null || request.getParameter("parcela_atual") == null) || (request.getParameter("parcela_total").isEmpty() || request.getParameter("parcela_atual").isEmpty())) {
+            despesa.setParcela_total(0);
+            despesa.setParcela_atual(0);
+        } else {
+            despesa.setParcela_total(Integer.parseInt(request.getParameter("parcela_total")));
+            despesa.setParcela_atual(Integer.parseInt(request.getParameter("parcela_atual")));
+        }
+        despesa.setRepetitivo(Boolean.parseBoolean(request.getParameter("repetitivo")));
+        despesa.setValor_despesa(Double.parseDouble(request.getParameter("valor_despesa")));
+        despesa.setCategoria(CategoriaDespesaEnum.valueOf(request.getParameter("categoria").toUpperCase()));
+        despesa.setDescricao(request.getParameter("descricao"));
+        despesa.setId_pessoa(Integer.parseInt(request.getParameter("id_pessoa")));
+        return despesa;
     }
 
 }

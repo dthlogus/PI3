@@ -6,12 +6,14 @@ package br.com.G5.model;
 
 import br.com.G5.model.Enum.CategoriaDespesaEnum;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 /**
  *
  * @author luisg
  */
 public class Despesa {
+
     int id;
     String nome;
     LocalDate data_aquisicao;
@@ -37,13 +39,13 @@ public class Despesa {
     public void setId(int id) {
         this.id = id;
     }
-    
+
     public int getId() {
         return id;
     }
 
-    public LocalDate getData_aquisicao() {
-        return data_aquisicao;
+    public String getData_aquisicao() {
+        return data_aquisicao.format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));
     }
 
     public void setData_aquisicao(LocalDate data_aquisicao) {
@@ -112,5 +114,9 @@ public class Despesa {
 
     public void setId_pessoa(int id_pessoa) {
         this.id_pessoa = id_pessoa;
+    }
+    
+    public LocalDate getDataAquisicaoLocalDate(){
+        return data_aquisicao;
     }
 }

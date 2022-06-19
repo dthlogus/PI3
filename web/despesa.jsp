@@ -6,6 +6,7 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -43,7 +44,7 @@
                 </select>
                 <label id="lbDescricao" name="lbDescricao">Descricao</label>
                 <textarea name="descricao" rows="4" cols="50" maxlength="250" value="<c:out value="${descricao}" />"></textarea>
-                <input type="number" name="id_pessoa" <c:out value="${id_pessoa}" />>
+                <input type="number" name="id_pessoa" value="1" readonly hidden/>
                 <button name="action" value="inserir">Inserir</button>
                 <button name="action" value="alterar">Alterar</button>
                 <button name="action" value="excluir">Remover</button>
@@ -67,8 +68,13 @@
                             <td><c:out value="${despesa.id}"/></td>
                             <td><c:out value="${despesa.nome}"/></td>
                             <td><c:out value="${despesa.data_aquisicao}"/></td>
-                            <td><c:out value="${despesa.parcela_total}"/> / <c:out value="${despesa.parcela_atual}"/></td>
-                            <td><c:out value="${despesa.repetitivo}"/></td>
+                            <td><c:out value="${despesa.parcela_atual}"/> / <c:out value="${despesa.parcela_total}"/></td>
+                            <c:if test="${despesa.repetitivo}">
+                            <td>Habilitado</td>
+                            </c:if>
+                            <c:if test="${!despesa.repetitivo}">
+                            <td>Não Habilitado</td>
+                            </c:if>
                             <td><c:out value="${despesa.valor_despesa}"/></td>
                             <td><c:out value="${despesa.categoria}"/></td>
                             <td><c:out value="${despesa.descricao}"/></td>
