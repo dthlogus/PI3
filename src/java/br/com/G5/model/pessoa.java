@@ -9,23 +9,11 @@ package br.com.G5.model;
  * @author luisg
  */
 public class Pessoa {
-    int id_pessoa = 0;
+    int id_pessoa;
     String nome_completo;
     String cpf;
-    String usuario;
+    String email;
     String senha;
-
-    public Pessoa() {
-    }
-
-    
-    
-    public Pessoa(String nome_completo, String cpf, String usuario, String senha) {
-        this.nome_completo = nome_completo;
-        this.cpf = cpf;
-        this.usuario = usuario;
-        this.senha = senha;
-    }
 
     public int getId_pessoa() {
         return id_pessoa;
@@ -51,12 +39,12 @@ public class Pessoa {
         this.cpf = cpf;
     }
 
-    public String getUsuario() {
-        return usuario;
+    public String getEmail() {
+        return email;
     }
 
-    public void setUsuario(String usuario) {
-        this.usuario = usuario;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getSenha() {

@@ -33,12 +33,13 @@ public class ContaCorrenteDao extends OperacoesConta {
     @Override
     public void adicionarConta(Conta cc) {
          try {
-            String sql = "INSERT INTO conta_corrente(nome_titular, nome_banco, numero_contacorrente, limite_contacorrente) VALUES (?, ?, ?, ?)";
+            String sql = "INSERT INTO conta_corrente(nome_titular, nome_banco, numero_contacorrente, limite_contacorrente, id_pessoa) VALUES (?, ?, ?, ?, ?)";
             PreparedStatement ps = connection.prepareStatement(sql);
             ps.setString(1, cc.getNomeTitular());
             ps.setString(2, cc.getNomeBanco());
             ps.setInt(3, cc.getNumeroConta());
             ps.setDouble(4, cc.getLimiteConta());
+            ps.setInt(5, cc.getId_pessoa());
             ps.executeUpdate();
         } catch (SQLException erro) {
             Logger.getLogger(ContaCorrenteDao.class.getName()).log(Level.SEVERE, null, erro);
@@ -60,15 +61,18 @@ public class ContaCorrenteDao extends OperacoesConta {
     @Override
     public void alterarConta(Conta cc) {
       try {
-            PreparedStatement ps = connection.prepareStatement("UPDATE conta_corrente SET nome_titular = ?, nome_banco = ?, numero_contacorrente = ?, limite_contacorrente = ? WHERE id_contacorrente = ?");
+            PreparedStatement ps = connection.prepareStatement("UPDATE conta_corrente SET nome_titular = ?, nome_banco = ?, "
+                    + "numero_contacorrente = ?, limite_contacorrente = ? WHERE id_contacorrente = ?");
             ps.setString(1, cc.getNomeTitular());
             ps.setString(2, cc.getNomeBanco());
             ps.setInt(3, cc.getNumeroConta());
             ps.setDouble(4, cc.getLimiteConta());
-            ps.executeQuery();
+            ps.setInt(5, cc.getIdConta());
+            ps.executeUpdate();
         
         } catch (SQLException erro) {
-            Logger.getLogger(ContaCorrenteDao.class.getName()).log(Level.SEVERE, null, erro);
+            erro.printStackTrace();
+//            Logger.getLogger(ContaCorrenteDao.class.getName()).log(Level.SEVERE, null, erro);
         }
     }
 
@@ -88,6 +92,7 @@ public class ContaCorrenteDao extends OperacoesConta {
                 cc.setNomeBanco(rs.getString("nome_banco"));
                 cc.setNumeroConta(rs.getInt("numero_contacorrente"));
                 cc.setLimiteConta(rs.getDouble("limite_contacorrente"));
+                cc.setId_pessoa(rs.getInt("id_pessoa"));
             }
         } catch (SQLException erro) {
             Logger.getLogger(ContaCorrenteDao.class.getName()).log(Level.SEVERE, null, erro);
@@ -96,12 +101,14 @@ public class ContaCorrenteDao extends OperacoesConta {
     }
 
     @Override
-    public List<Conta> listagem() {
+    public List<Conta> listagem(int i) {
            List<Conta> listaContaCorrente = new ArrayList<>();
 
         try {
-            Statement statement = connection.createStatement();
-            ResultSet rs = statement.executeQuery("SELECT * FROM conta_corrente");
+            String sql = "SELECT * FROM conta_corrente WHERE id_pessoa = ?";
+            PreparedStatement ps = connection.prepareStatement(sql);
+            ps.setInt(1, i);
+            ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 Conta cc = new Conta();
                 cc.setIdConta(rs.getInt("id_contacorrente"));
@@ -109,6 +116,7 @@ public class ContaCorrenteDao extends OperacoesConta {
                 cc.setNomeBanco(rs.getString("nome_banco"));
                 cc.setNumeroConta(rs.getInt("numero_contacorrente"));
                 cc.setLimiteConta(rs.getDouble("limite_contacorrente"));
+                cc.setId_pessoa(rs.getInt("id_pessoa"));
                 listaContaCorrente.add(cc);
             }
             }catch (SQLException erro) {

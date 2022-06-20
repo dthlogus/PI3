@@ -4,6 +4,7 @@
     Author     : Joao Nicholas
 --%>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -24,7 +25,7 @@
         <main class="main">
             <section class="index">
                 <div class="cadastro">
-                    <form action="" method="POST" >
+                    <form action="Pessoa" method="POST" >
 
                         <h1>Cadastro</h1>
                         <ul>
@@ -40,36 +41,45 @@
 
                             <li>
                                 <label>CPF</label>
-                                <input type="text" name="CPF" id="CPFl" value="" required="true" placeholder="12345678901"/>
+                                <input type="text" name="cpf" id="CPFl" value="" required="true" placeholder="12345678901"/>
                             </li>
                             <li>
                                 <label>Senha</label>
                                 <input type="password" name="senha" value="" required="true" placeholder="senha"  minlength="6"/>
                             </li>   
                         </ul>
-                        <input type="submit" class="cadastrar" value="cadastrar"/>
+                        <input type="submit" name="action" class="cadastrar" value="cadastrar"/>
                     </form>
-
+                    <c:if test="${erroCadastro}">
+                        <p style="color: white;">Dados inválidos para cadastro, por favor, confira os valores</p>
+                    </c:if>
+                        <c:if test="${sucessoCadastro}">
+                        <p style="color: greenyellow;">Cadastrado com sucesso</p>
+                    </c:if>
                 </div>
+                
 
 
                 <div class="login">
-                    <form action="" method="POST">
+                    <form action="Pessoa" method="POST">
 
                         <h1>Login</h1>
 
                         <ul>
                             <li>
                                 <label>CPF</label>
-                                <input type="text" name="CPF" id="CPFl" value="" required="true" placeholder="12345678901"/>
+                                <input type="text" name="cpf" id="CPFl" value="" maxlength="11" required="true" placeholder="12345678901"/>
                             </li>
                             <li>
                                 <label>Senha</label>
                                 <input type="password" name="senha" value="" required="true" placeholder="senha"  minlength="6"/>
                             </li>
                         </ul>
-                        <input type="submit" class="acessar" value="acessar" onclick="redirecionar()"/>
-                    </form> 
+                        <input type="submit" name="action" class="acessar" value="acessar"/>
+                    </form>
+                    <c:if test="${erroLogar}">
+                        <p style="color: white;">Usuarios ou senhas invalidos</p>
+                    </c:if>
                 </div>
             </section>
 

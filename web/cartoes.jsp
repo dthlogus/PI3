@@ -23,8 +23,9 @@
             <h2>C'wallet Web</h2>
 
             <nav class="menu">
-                <a href="index.jsp">Inicio</a>
+                <a href="dashboard.jsp">Inicio</a>
                 <a href="cadastrocc.jsp">Conta Corrente</a>
+                <a href="cadastrocp.jsp">Conta Poupança</a>
                 <a href="despesa.jsp">Despesas</a>
                 <a href="cartoes.jsp">Cartões</a>
             </nav>

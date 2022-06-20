@@ -18,11 +18,18 @@
 
         <header class="header">
             <h2>C'wallet Web</h2>
+            <<nav class="menu">
+                <a href="dashboard.jsp">Inicio</a>
+                <a href="cadastrocc.jsp">Conta Corrente</a>
+                <a href="cadastrocp.jsp">Conta Poupança</a>
+                <a href="despesa.jsp">Despesas</a>
+                <a href="cartoes.jsp">Cartões</a>
+            </nav>
         </header>
 
         <main class="despesa">
             <div class="despesa_container_title">
-            <h1 class="despesa_title">Receita</h1>
+                <h1 class="despesa_title">Receita</h1>
             </div>
             <form method="POST" action="Receita" class="formDespesa">
                 <div class="dp">
@@ -37,12 +44,12 @@
                             <input type="text" id="nome" name="nome" />
 
                         </li>
-                        
+
                         <li>
                             <label id="lbDataAquisicao" name="lbDataAquisicao">Data da aquisição</label>
                             <input placeholder="12/07/2017" type="text" id="data_aquisicao" name="data_aquisicao" pattern="^([0-2][0-9]|(3)[0-1])(\/)(((0)[0-9])|((1)[0-2]))(\/)\d{4}$" />
                         </li>
-                        
+
                         <li>
                             <label id="lbDataAquisicao" name="lbDataAquisicao">Data de disponibilidade</label>
                             <input placeholder="12/07/2017" type="text" id="data_disponibilidade" name="data_disponibilidade" pattern="^([0-2][0-9]|(3)[0-1])(\/)(((0)[0-9])|((1)[0-2]))(\/)\d{4}$" />
@@ -65,10 +72,6 @@
                         <li>
                             <label id="lbDescricao" name="lbDescricao">Descricao</label>
                             <textarea name="descricao" rows="4" cols="50" maxlength="250"></textarea>
-                        </li>
-
-                        <li>
-                            <input type="number" name="id_pessoa" value="1" readonly hidden/>
                         </li>
 
                         <li style="display: inline-flex;">

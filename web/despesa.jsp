@@ -18,11 +18,18 @@
 
         <header class="header">
             <h2>C'wallet Web</h2>
+            <nav class="menu">
+                <a href="dashboard.jsp">Inicio</a>
+                <a href="cadastrocc.jsp">Conta Corrente</a>
+                <a href="cadastrocp.jsp">Conta Poupança</a>
+                <a href="despesa.jsp">Despesas</a>
+                <a href="cartoes.jsp">Cartões</a>
+            </nav>
         </header>
 
         <main class="despesa">
             <div class="despesa_container_title">
-            <h1 class="despesa_title">Despesa</h1>
+                <h1 class="despesa_title">Despesa</h1>
             </div>
             <form method="POST" action="Despesa" class="formDespesa">
                 <div class="dp">
@@ -84,10 +91,6 @@
                             <textarea name="descricao" rows="4" cols="50" maxlength="250" value="<c:out value="${descricao}" />"></textarea>
                         </li>
 
-                        <li>
-                            <input type="number" name="id_pessoa" value="1" readonly hidden/>
-                        </li>
-
                         <li style="display: inline-flex;">
                             <button name="action" value="inserir">Inserir</button>
                             <button name="action" value="alterar">Alterar</button>
@@ -123,10 +126,10 @@
                             <td><c:out value="${despesa.data_aquisicao}"/></td>
                             <td><c:out value="${despesa.parcela_atual}"/> / <c:out value="${despesa.parcela_total}"/></td>
                             <c:if test="${despesa.repetitivo}">
-                            <td>Habilitado</td>
+                                <td>Habilitado</td>
                             </c:if>
                             <c:if test="${!despesa.repetitivo}">
-                            <td>Não Habilitado</td>
+                                <td>Não Habilitado</td>
                             </c:if>
                             <td>R$: <c:out value="${despesa.valor_despesa}"/></td>
                             <td class="tb_categoria"><c:out value="${despesa.categoria}"/></td>
