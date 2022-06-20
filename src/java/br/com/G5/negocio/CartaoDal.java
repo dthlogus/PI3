@@ -122,8 +122,10 @@ public class CartaoDal implements IOperacoesCartao {
     public ArrayList<Cartao> listagem(int id) {
         ArrayList<Cartao> cartoes = new ArrayList<>();
         try {
-            Statement statement = connection.createStatement();
-            ResultSet rs = statement.executeQuery("SELECT * FROM cartao");
+            String sql = "SELECT * FROM cartao WHERE id_pessoa = ?";
+            PreparedStatement ps = connection.prepareStatement(sql);
+            ps.setInt(1, id);
+            ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 Cartao cartao = new Cartao();
                 cartao.setId_cartao(rs.getInt("id_cartao"));

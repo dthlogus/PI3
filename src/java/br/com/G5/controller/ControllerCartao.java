@@ -130,7 +130,8 @@ public class ControllerCartao extends HttpServlet {
           if (consultar) {
             request.setAttribute("lista", cartoes);
         } else {
-            request.setAttribute("lista", cartaodal.listagem(3));
+            cartao.setId_pessoa(Integer.parseInt(request.getSession().getAttribute("id_pessoa").toString()));
+            request.setAttribute("lista", cartaodal.listagem(cartao.getId_pessoa()));
         }
       
        RequestDispatcher rd = request.getRequestDispatcher("/cartoes.jsp");
@@ -159,7 +160,7 @@ public class ControllerCartao extends HttpServlet {
         cartao.setData_vencimento(LocalDate.parse(request.getParameter("data_vencimento"),formatoFaturas));
         cartao.setData_pagamento(LocalDate.parse(request.getParameter("data_pagamento"),formatoFaturas));
         cartao.setCcv(request.getParameter("ccv"));
-        cartao.setId_pessoa(3);
+        cartao.setId_pessoa(Integer.parseInt(request.getSession().getAttribute("id_pessoa").toString()));
         
         return cartao;
         

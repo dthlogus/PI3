@@ -486,16 +486,26 @@ body{
     width: 100%;
     background-image: url("../img/background1.jpg");
     padding: 55px 5px;
-    height: 600px;
+    height: 100vh;
+}
+.cartao_container_titulo{
+    position: relative;
+    height: 50px;
+}
+.cartao_titulo{
+    font-size: 3rem;
+    margin-top: -2rem;
+    margin-bottom: 1rem;
+    font-family: serif;
+    color: white;
+    position: absolute;
+    left: 19rem;
 }
 
-.cartao .cadastroCartao{
-}
-
-.cartao .cadastroCartao .formCartao{
+.cartao .formCartao{
     float: left;
     border: 2px solid #fff;
-    padding: 20px 20px;
+    padding: 30px 20px;
     background-color: #70809045;
     border-radius: 40px;
     line-height: 20px;
@@ -504,32 +514,61 @@ body{
     max-height: 100%;
     margin-left: 20px;
 }
-
-.cartao .cadastroCartao .formCartao h1{
-}
-
-
-.cartao .cadastroCartao .formCartao .tabelaCadastroCartao{
-}
-
-.cartao .cadastroCartao .formCartao .tabelaCadastroCartao tbody{
+.cartao .formCartao .ct ul{
     color: #fff;
     font-family: system-ui;
 }
-
-.cartao .cadastroCartao .formCartao .tabelaCadastroCartao tbody tr{
-}
-
-.cartao .cadastroCartao .formCartao .tabelaCadastroCartao tbody tr td{
-}
-
-.cartao .cadastroCartao .formCartao .tabelaCadastroCartao tbody tr td input{
-    border-radius: 5px;
+.cartao .formCartao .ct ul li{
+    display: inline-grid;
     padding: 3px;
-    margin-bottom: 14px;
+    padding-bottom: 3px;
+}
+.cartao .formCartao .ct ul li label{
+    padding-bottom: 3px;
+}
+.cartao .formCartao .ct ul li input{
+    padding: 2px;
+}
+.cartao .formCartao .ct ul li button{
+    margin: 10px 4px;
+    padding: 10px 8px;
+    border-radius: 10px;
+    background: none;
+    color: #fff;
+    border: 1px solid;
+    font-weight: bold;
+    font-size: 0.9rem;
+    width: 106px;
+}
+.cartao .formCartao .ct ul li button{
+    background-color: #ffffff7d;
+    color: #000;
 }
 
-.cartao .cadastroCartao .formCartao .botao{
+.cartao .tabela{
+    border-radius: 3px;
+    padding: 1.5rem;
+    border: 2px solid white;
+    float: right;
+    margin-right: 50px;
+    color: #fff;
+}
+.cartao .tabela table{
+    border-radius: 3px;
+}
+.cartao  .tabela table tr{
+    font-family: system-ui;
+}
+.cartao  .tabela table tr th{
+    padding-bottom: 1rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+.cartao .tabela table tr td{
+    padding-bottom: 0.5rem;
+    text-align: center;
 }
 
 /*CADASTRO CP*/

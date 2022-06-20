@@ -29,7 +29,7 @@
         </header>
 
 
-        <main class="mainContaPoupanca">
+        <main class="mainContaPoupanca despesa">
             <section class="contaPoupanca">
                 <div class="cadastroContaPoupanca">
                     <form method="POST" action="ControllerCp" >
@@ -83,7 +83,7 @@
                 </div>
 
 
-                <div class="listagemDeContasPoupanca">
+                <div class="listagemDeContasPoupanca tabela">
                     <table border="1">
                         <thead>
                             <tr>

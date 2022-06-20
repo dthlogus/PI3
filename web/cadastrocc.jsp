@@ -29,7 +29,7 @@
         </header>
 
 
-        <main class="mainContaCorrente">
+        <main class="mainContaCorrente despesa">
             <section class="contaCorrente">
                 <div class="cadastroContaCorrente">
                     <form method="POST" action="ControllerCc" >
@@ -83,7 +83,7 @@
                 </div>
 
 
-                <div class="listagemDeContasCorrente">
+                <div class="listagemDeContasCorrente tabela">
                     <table border="1">
                         <thead>
                             <tr>
