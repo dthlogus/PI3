@@ -8,5 +8,5 @@ public interface IOperacoesCartao {
      void IExcluirPorId(int id);
      void IAlterarCartao(Cartao objeto);
      Cartao consultarPorId(int id);
-     ArrayList<Cartao> listagem();
+     ArrayList<Cartao> listagem(int id);
 }

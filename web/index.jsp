@@ -11,7 +11,9 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link href="estilos/css/estilos.css" rel="stylesheet" />
         <script src="estilos/javascripturo/script.js"></script>
+        <script src="./js/validaCPFLogin"></script>
         <title>C'Wallet Home Page</title>
+            
     </head>
     <body>
 

@@ -12,35 +12,22 @@ import java.util.Date;
  * @author luisg
  */
 public class Cartao {
+    int id_pessoa;
     int id_cartao ;
-    String numeroDoCartao;
-    String bandeira_Cartao;
+    String numero_cartao;
+    String bandeira_cartao;
     LocalDate validade;
-    String titular;
+    String nome_cartao;
     LocalDate data_vencimento;
     LocalDate data_pagamento;
     LocalDate data_fechamento;
     String ccv;
     double limite;
-  
-    
-  
+
 
     public Cartao() {
     }
 
-    public Cartao(String numeroDoCartao, String bandeira_Cartao, LocalDate validade, String titular, LocalDate data_vencimento, LocalDate data_pagamento, LocalDate data_fechamento, String ccv, Double limite) {
-        this.numeroDoCartao = numeroDoCartao;
-        this.bandeira_Cartao = bandeira_Cartao;
-        this.validade = validade;
-        this.titular = titular;
-        this.data_vencimento = data_vencimento;
-        this.data_pagamento = data_pagamento;
-        this.data_fechamento = data_fechamento;
-        this.ccv = ccv;
-        this.limite = limite;
-    }
-   
 
     public int getId_cartao() {
         return id_cartao;
@@ -50,36 +37,38 @@ public class Cartao {
         this.id_cartao = id_cartao;
     }
 
-    public String getNumeroDoCartao() {
-        return numeroDoCartao;
+    public String getNumero_cartao() {
+        return numero_cartao;
     }
 
-    public void setNumeroDoCartao(String numeroDoCartao) {
-        this.numeroDoCartao = numeroDoCartao;
+    public void setNumero_cartao(String numero_cartao) {
+        this.numero_cartao = numero_cartao;
     }
 
-    public String getBandeira_Cartao() {
-        return bandeira_Cartao;
+    public String getBandeira_cartao() {
+        return bandeira_cartao;
     }
 
-    public void setBandeira_Cartao(String bandeira_Cartao) {
-        this.bandeira_Cartao = bandeira_Cartao;
+    public void setBandeira_cartao(String bandeira_cartao) {
+        this.bandeira_cartao = bandeira_cartao;
     }
 
-    public LocalDate getValidade() {
-        return validade;
+    public String getValidade() {
+        String val;
+        val = validade.getMonthValue() + "/" + validade.getYear();
+        return val;
     }
 
     public void setValidade(LocalDate validade) {
         this.validade = validade;
     }
 
-    public String getTitular() {
-        return titular;
+    public String getNome_cartao() {
+        return nome_cartao;
     }
 
-    public void setTitular(String titular) {
-        this.titular = titular;
+    public void setNome_cartao(String nome_cartao) {
+        this.nome_cartao = nome_cartao;
     }
 
     public LocalDate getData_vencimento() {
@@ -122,9 +111,18 @@ public class Cartao {
         this.limite = limite;
     }
 
-    @Override
-    public String toString() {
-        return "Cartao{" + "id_cartao=" + id_cartao + ", numeroDoCartao=" + numeroDoCartao + ", bandeira_Cartao=" + bandeira_Cartao + ", validade=" + validade + ", titular=" + titular + ", data_vencimento=" + data_vencimento + ", data_pagamento=" + data_pagamento + ", data_fechamento=" + data_fechamento + ", ccv=" + ccv + ", limite=" + limite + '}';
+    public LocalDate getValidadeLocalDate(){
+        return validade;
     }
+
+    public int getId_pessoa() {
+        return id_pessoa;
+    }
+
+    public void setId_pessoa(int id_pessoa) {
+        this.id_pessoa = id_pessoa;
+    }
+    
+
 
 }
