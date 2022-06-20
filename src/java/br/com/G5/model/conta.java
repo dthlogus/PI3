@@ -14,6 +14,15 @@ public class Conta {
     protected String nomeBanco;
     protected int numeroConta;
     protected double limiteConta;
+    int id_pessoa;
+
+    public int getId_pessoa() {
+        return id_pessoa;
+    }
+
+    public void setId_pessoa(int id_pessoa) {
+        this.id_pessoa = id_pessoa;
+    }
 
     public Conta() {
     }
@@ -64,11 +73,5 @@ public class Conta {
 
     public void setLimiteConta(double limiteConta) {
         this.limiteConta = limiteConta;
-    }
-    
-
-  
-    
-    
-    
+    } 
 }

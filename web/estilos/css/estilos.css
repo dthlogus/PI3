@@ -87,6 +87,7 @@ body{
     color: floralwhite;
     font-style: italic;
     font-size: larger;
+    float: left;
 }
 
 /*FOOTER*/
@@ -104,6 +105,7 @@ body{
     padding: 3px;
 }
 .footer ul{
+    margin-top: 23px;
 }
 .footer ul li{
     margin: 5px;
@@ -116,8 +118,8 @@ body{
 .main{
     width: 100%;
     background-image: url("../img/background1.jpg");
-    padding: 95px 125px;
-    height: 600px;
+    padding: 25px 15px;
+    height: 900px;
 }
 
 /*CADASTRO*/
@@ -239,12 +241,39 @@ body{
 /*CADASTRO CC*/
 
 .header .menu{
+    float: right;
+    margin-top: 23px;
+    margin-right: 70px;
+    padding-right: 1;
 }
 .header .menu a{
+    border: 2px solid #fff;
+    padding: 3px;
+    text-decoration: none;
+    color: #fff;
+    font-family: system-ui;
+    margin-left: 30px;
+    border-radius: 3px;
+}
+
+.header .menu a:hover{
+
+    color: #000;
+
+    border-color: #000;
+
+    border-radius: 5px;
 }
 
 
-.main .index .cadastroContaCorrente{
+.mainContaCorrente{
+    width: 100%;
+    background-image: url("../img/background1.jpg");
+    padding: 25px 15px;
+    height: 750px;
+}
+
+.mainContaCorrente .contaCorrente .cadastroContaCorrente{
     float: left;
     border: 2px solid #fff;
     padding: 30px 40px;
@@ -255,41 +284,46 @@ body{
     max-width: 50%;
     max-height: 50%;
 }
-.main .index .cadastroContaCorrente form{
+.mainContaCorrente .contaCorrente .cadastroContaCorrente form{
     font-family: system-ui;
 }
-.main .index .cadastroContaCorrente form h1{
+.mainContaCorrente .contaCorrente .cadastroContaCorrente form h1{
     text-align: center;
     color: floralwhite;
     margin-bottom: 20px;
     font-size: revert;
 }
-.main .index .cadastroContaCorrente form ul{
+.mainContaCorrente .contaCorrente .cadastroContaCorrente form ul{
     display: table-caption;
     margin-bottom: 10px;
 }
-.main .index .cadastroContaCorrente form ul li{
+.mainContaCorrente .contaCorrente .cadastroContaCorrente form ul li{
     margin-bottom: 20px;
+    display: inherit;
 }
-.main .index .cadastroContaCorrente form ul li label{
+.mainContaCorrente .contaCorrente .cadastroContaCorrente form ul li label{
     color: #fff;
     padding-bottom: 1px;
 }
-.main .index .cadastroContaCorrente form ul li input{
+.mainContaCorrente .contaCorrente .cadastroContaCorrente form ul li input{
     border-radius: 5px;
     height: 30px;
     padding: 3px;
 }
-.main .index .cadastroContaCorrente form ul li .banco{
+.mainContaCorrente .contaCorrente .cadastroContaCorrente form ul li .banco{
     padding: 3px 44px 3px 3px;
     border-radius: 5px;
 }
-.main .index .cadastroContaCorrente form ul li .banco option{
+.mainContaCorrente .contaCorrente .cadastroContaCorrente form ul li .banco option{
 }
-.main .index .cadastroContaCorrente form ul li .banco option{
+.mainContaCorrente .contaCorrente .cadastroContaCorrente form ul li .banco option{
 }
-.main .index .cadastroContaCorrente form .cadastarConta{
-    margin: 10px 56px;
+
+.mainContaCorrente .contaCorrente .cadastroContaCorrente form ul li .banco option{
+}
+
+.mainContaCorrente .contaCorrente .cadastroContaCorrente form ul li button{
+    margin: 10px 16px;
     padding: 10px 10px;
     border-radius: 10px;
     background: none;
@@ -297,9 +331,10 @@ body{
     border: 1px solid;
     font-weight: bold;
     font-size: 0.9rem;
-
 }
-.main .index .cadastroContaCorrente form .cadastarConta:hover{
+
+
+.mainContaCorrente .contaCorrente .cadastroContaCorrente form ul li button:hover{
     background: rgba( 255, 255, 255, 0.25 );
     box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
     backdrop-filter: blur( 4px );
@@ -308,6 +343,35 @@ body{
     border: 1px solid rgba( 255, 255, 255, 0.18 );
     color: #fff;
 }
+
+.mainContaCorrente .contaCorrente .listagemDeContasCorrente{
+    border-radius: 3px;
+    padding: 1.5rem;
+    border: 2px solid white;
+    float: right;
+    margin-right: 50px;
+    color: #fff;
+}
+.mainContaCorrente .contaCorrente .listagemDeContasCorrente table{
+    border-radius: 3px;
+}
+.mainContaCorrente .contaCorrente .listagemDeContasCorrente table thead{
+}
+.mainContaCorrente .contaCorrente .listagemDeContasCorrente table thead tr{
+}
+.mainContaCorrente .contaCorrente .listagemDeContasCorrente table thead tr th{
+    padding-bottom: 1rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+.mainContaCorrente .contaCorrente .listagemDeContasCorrente table thead tr td{
+    padding-bottom: 0.5rem;
+    text-align: center;
+}
+
+
 
 /*DESPESA*/
 .despesa{
@@ -441,20 +505,219 @@ body{
     margin-left: 20px;
 }
 
-.cartao .cadastroCartao .formCartao h1{}
+.cartao .cadastroCartao .formCartao h1{
+}
 
 
 .cartao .cadastroCartao .formCartao .tabelaCadastroCartao{
 }
 
-.cartao .cadastroCartao .formCartao .tabelaCadastroCartao tbody{color: #fff;font-family: system-ui;}
+.cartao .cadastroCartao .formCartao .tabelaCadastroCartao tbody{
+    color: #fff;
+    font-family: system-ui;
+}
 
-.cartao .cadastroCartao .formCartao .tabelaCadastroCartao tbody tr{}
+.cartao .cadastroCartao .formCartao .tabelaCadastroCartao tbody tr{
+}
 
 .cartao .cadastroCartao .formCartao .tabelaCadastroCartao tbody tr td{
 }
 
-.cartao .cadastroCartao .formCartao .tabelaCadastroCartao tbody tr td input{border-radius: 5px;padding: 3px;margin-bottom: 14px;}
+.cartao .cadastroCartao .formCartao .tabelaCadastroCartao tbody tr td input{
+    border-radius: 5px;
+    padding: 3px;
+    margin-bottom: 14px;
+}
 
 .cartao .cadastroCartao .formCartao .botao{
+}
+
+/*CADASTRO CP*/
+
+.header .menu{
+    float: right;
+    margin-top: 23px;
+    margin-right: 70px;
+    padding-right: 1;
+}
+.header .menu a{
+    border: 2px solid #fff;
+    padding: 3px;
+    text-decoration: none;
+    color: #fff;
+    font-family: system-ui;
+    margin-left: 30px;
+    border-radius: 3px;
+}
+
+.header .menu a:hover{
+
+    color: #000;
+
+    border-color: #000;
+
+    border-radius: 5px;
+}
+
+
+.mainContaPoupanca{
+    width: 100%;
+    background-image: url("../img/background1.jpg");
+    padding: 25px 15px;
+    height: 750px;
+}
+
+.mainContaPoupanca .contaPoupanca .cadastroContaPoupanca{
+    float: left;
+    border: 2px solid #fff;
+    padding: 30px 40px;
+    background-color: #70809045;
+    border-radius: 40px;
+    line-height: 20px;
+    backdrop-filter: blur(25px);
+    max-width: 50%;
+    max-height: 50%;
+}
+.mainContaPoupanca .contaPoupanca .cadastroContaPoupanca form{
+    font-family: system-ui;
+}
+.mainContaPoupanca .contaPoupanca .cadastroContaPoupanca form h1{
+    text-align: center;
+    color: floralwhite;
+    margin-bottom: 20px;
+    font-size: revert;
+}
+.mainContaPoupanca .contaPoupanca .cadastroContaPoupanca form ul{
+    display: table-caption;
+    margin-bottom: 10px;
+}
+.mainContaPoupanca .contaPoupanca .cadastroContaPoupanca form ul li{
+    margin-bottom: 20px;
+    display: inherit;
+}
+.mainContaPoupanca .contaPoupanca .cadastroContaPoupanca form ul li label{
+    color: #fff;
+    padding-bottom: 1px;
+}
+.mainContaPoupanca .contaPoupanca .cadastroContaPoupanca form ul li input{
+    border-radius: 5px;
+    height: 30px;
+    padding: 3px;
+}
+.mainContaPoupanca .contaPoupanca .cadastroContaPoupanca form ul li .banco{
+    padding: 3px 44px 3px 3px;
+    border-radius: 5px;
+}
+.mainContaPoupanca .contaPoupanca .cadastroContaPoupanca form ul li .banco option{
+}
+.mainContaPoupanca .contaPoupanca .cadastroContaPoupanca form ul li .banco option{
+}
+
+.mainContaPoupanca .contaPoupanca .cadastroContaPoupanca form ul li .banco option{
+}
+
+.mainContaPoupanca .contaPoupanca .cadastroContaPoupanca form ul li button{
+    margin: 10px 16px;
+    padding: 10px 10px;
+    border-radius: 10px;
+    background: none;
+    color: #fff;
+    border: 1px solid;
+    font-weight: bold;
+    font-size: 0.9rem;
+}
+
+
+.mainContaPoupanca .contaPoupanca .cadastroContaPoupanca form ul li button:hover{
+    background: rgba( 255, 255, 255, 0.25 );
+    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+    backdrop-filter: blur( 4px );
+    -webkit-backdrop-filter: blur( 4px );
+    border-radius: 10px;
+    border: 1px solid rgba( 255, 255, 255, 0.18 );
+    color: #fff;
+}
+
+.mainContaPoupanca .contaPoupanca .listagemDeContasPoupanca{
+    border-radius: 3px;
+    padding: 1.5rem;
+    border: 2px solid white;
+    float: right;
+    margin-right: 50px;
+    color: #fff;
+}
+
+.mainContaPoupanca .contaPoupanca .listagemDeContasPoupanca table{
+    border-radius: 3px;
+}
+.mainContaPoupanca .contaPoupanca .listagemDeContasPoupanca table thead{
+}
+.mainContaPoupanca .contaPoupanca .listagemDeContasPoupanca table thead tr{
+}
+.mainContaPoupanca .contaPoupanca .listagemDeContasPoupanca table thead tr th{
+    padding-bottom: 1rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+.mainContaPoupanca .contaPoupanca .listagemDeContasPoupanca table thead tr td{
+    padding-bottom: 0.5rem;
+    text-align: center;
+}
+
+
+
+/*DASHBOARD*/
+
+
+.dashboard{
+    width: 100%;
+    background-image: url("../img/background1.jpg");
+    padding: 25px 15px;
+    height: 750px;
+}
+
+
+.main .formDashboard{
+    float: left;
+    border: 2px solid #fff;
+    padding: 204px 5px;
+    background-color: #70809045;
+    border-radius: 40px;
+    line-height: 120px;
+    backdrop-filter: blur(1px);
+    max-width: 110%;
+    max-height: 100%;
+    margin-left: 20px;
+}
+
+
+.main .formDashboard{
+
+}
+
+.main .formDashboard .nav{
+
+}
+
+.main .formDashboard .nav a{
+    margin: 60px 96px;
+    padding: 20px 60px;
+    border-radius: 10px;
+    background: none;
+    color: #fff;
+    border: 6px solid;
+    font-weight: bold;
+    font-size: 0.9rem;
+}
+
+.main .formDashboard .nav a:hover{
+    background: rgba( 255, 255, 255, 0.25 );
+    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+    backdrop-filter: blur( 4px );
+    -webkit-backdrop-filter: blur( 4px );
+    border-radius: 10px;
+    border: 6px solid rgba( 255, 255, 255, 0.18 );
+    color: #fff;
 }

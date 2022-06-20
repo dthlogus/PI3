@@ -16,6 +16,6 @@ public abstract class OperacoesConta {
     public abstract void excluirConta(int id);
     public abstract void alterarConta(Conta conta);
     public abstract Conta consultarPorId(int id);
-    public abstract List<Conta> listagem();
+    public abstract List<Conta> listagem(int i);
     
 }

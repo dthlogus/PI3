@@ -19,11 +19,18 @@
             <h2>C'wallet Web</h2>
         </header>
 
-        <section class = >
+        <main class="main">
 
-
-
-        </section>
+            <form action="action" class="formDashboard">
+                <nav class="nav">
+                    <a href="index.jsp">Inicio</a>
+                    <a href="cadastrocc.jsp">Conta Corrente</a>
+                    <a href="cadastrocp.jsp">Conta Poupança</a>
+                    <a href="despesa.jsp">Despesas</a>
+                    <a href="cartoes.jsp">Cartões</a>
+                </nav>
+            </form>
+        </main>
 
 
 

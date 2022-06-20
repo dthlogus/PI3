@@ -6,7 +6,6 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -18,10 +17,11 @@
     <body>
         <header class="header">
             <h2>C'wallet Web</h2>
-            
+
             <nav class="menu">
-                <a href="index.jsp">Inicio</a>
+                <a href="dashboard.jsp">Inicio</a>
                 <a href="cadastrocc.jsp">Conta Corrente</a>
+                <a href="cadastrocp.jsp">Conta Poupança</a>
                 <a href="despesa.jsp">Despesas</a>
                 <a href="cartoes.jsp">Cartões</a>
             </nav>
@@ -29,26 +29,26 @@
         </header>
 
 
-        <main class="main">
-            <section class="index">
+        <main class="mainContaCorrente">
+            <section class="contaCorrente">
                 <div class="cadastroContaCorrente">
-                    <form action="" method="POST">
+                    <form method="POST" action="ControllerCc" >
                         <h1>Cadastro de Conta Corrente</h1>
                         <ul>
-                            
+
                             <li>
                                 <label>ID</label>
-                                <input type="number" id="id" name="id" value="<c:out value="${id}" />" />
+                                <input type="number" id="id" name="id"/>
                             </li>
-                            
+
                             <li>
                                 <label>Nome Titular</label>
-                                <input id="nometitular" type="text" required="true" name="nometitular" placeholder="Nome do Títular" value="<c:out value="${id}" />" />
+                                <input id="nometitular" type="text"  name="nometitular" placeholder="Nome do Títular"  />
                             </li>
 
                             <li>
                                 <label>Banco</label>
-                                <select name="banco" id="banco" class="banco">
+                                <select name="banco" id="banco" class="banco" />
                                     <option value="bancodobrasil">Brando do Brasil</option>
                                     <option value="bradesco">Bradesco</option>
                                     <option value="caixa">Caixa Econômica</option>
@@ -63,44 +63,54 @@
 
                             <li>
                                 <label>Número da Conta Corrente</label>
-                                <input id="numerocc" type="text" required="true" name="numerocc"  value="" placeholder="12345" />
+                                <input id="numerocc" type="text"  name="numerocc"  placeholder="12345"/>
                             </li>
 
                             <li>
                                 <label>Limite da conta</label>
-                                <input id="limitecc" type="text" required="true" name="limitecc"  value="" placeholder="100,00" />
+                                <input id="limitecc" type="text"  name="limitecc" placeholder="100.00" />
+                            </li>
+
+                            <li style="display: inline-flex;">
+                                <button name="action" value="inserir">Inserir</button>
+                                <button name="action" value="alterar">Alterar</button>
+                                <button name="action" value="excluir">Remover</button>
+                                <button name="action" value="consultar">Consultar</button>
+                                <button name="action" value="listar">Listar todos</button>
                             </li>
                         </ul>
-                        <input type="submit" class="cadastarConta" value="confirmar"/>
                     </form>
                 </div>
-                
-                
+
+
                 <div class="listagemDeContasCorrente">
                     <table border="1">
                         <thead>
                             <tr>
                                 <th>ID</th>
                                 <th>Titular</th>
-                                <th>Numero da Conta Corrente</th>
                                 <th>Banco</th>
+                                <th>Numero da Conta Corrente</th>
                                 <th>Limite da conta</th>
                             </tr>
                         </thead>
 
-                        <tbody>
-                            <tr>
-                                
-                            </tr>
-                        </tbody>
-                    </table>
+                        <c:forEach items="${lista}" var="contacorrente">
+                            <tbody>
+                                <tr>
+                                    <td><c:out value="${contacorrente.idConta}"/></td>
+                                    <td><c:out value="${contacorrente.nomeTitular}"/></td>
+                                    <td><c:out value="${contacorrente.nomeBanco}"/></td>
+                                    <td><c:out value="${contacorrente.numeroConta}"/></td>
+                                    <td>R$: <c:out value="${contacorrente.limiteConta}"/></td>
+                                </tr>
+                            </tbody>
 
+                        </c:forEach>
+                    </table>
                 </div>
             </section>
         </main>
-
-
-
 
         <footer class="footer">
             <ul>
@@ -118,7 +128,5 @@
                 </li>
             </ul>
         </footer>
-
-
     </body>
 </html>

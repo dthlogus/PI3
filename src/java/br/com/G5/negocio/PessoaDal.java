@@ -7,7 +7,7 @@ package br.com.G5.negocio;
 import br.com.G5.model.Pessoa;
 import br.com.G5.persistencia.Conexao;
 import br.com.G5.persistencia.IOperacoesPessoa;
-import br.com.G5.validation.validaCPF;
+import br.com.G5.validation.ValidaCPF;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -32,7 +32,7 @@ public class PessoaDal implements IOperacoesPessoa {
         String sql = "insert into pessoa(nome_completo,cpf_pessoa,email,senha) values(?,?,?,?)";
         PreparedStatement ps;
         ps = connection.prepareStatement(sql);
-        if (validaCPF.isCPF(objeto.getCpf())) {
+        if (ValidaCPF.isCPF(objeto.getCpf())) {
             ps.setString(1, objeto.getNome_completo());
             ps.setString(2, objeto.getCpf());
             ps.setString(3, objeto.getEmail());
